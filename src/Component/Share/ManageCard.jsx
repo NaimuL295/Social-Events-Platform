@@ -1,0 +1,63 @@
+import React from 'react';
+import { IoLocationOutline } from 'react-icons/io5';
+import { MdOutlineDateRange } from 'react-icons/md';
+import { Link } from 'react-router';
+
+const ManageCard = ({manage}) => {
+    console.log(manage);
+    const handleDelete=()=>{
+
+    }
+    return(
+      <>     
+<div className="card w-80 bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+  <figure>
+    <img 
+      src={manage?.thumbnail} 
+      alt={manage?.title} 
+      className="w-full h-48 object-cover"
+    />
+  </figure>
+  <div className="card-body">
+    <div className="flex justify-between items-start">
+      <h2 className="card-title text-lg">{manage?.title}</h2>
+      <span className="text-base font-medium">{manage?.eventType}</span>
+    </div>
+
+    <div className="flex items-center mt-2">
+      <IoLocationOutline />
+      <span className="ml-2 ">{manage?.location}</span>
+    </div>
+
+    <div className="flex items-center mt-2">
+      <MdOutlineDateRange />
+      <span className="ml-2 ">{manage?.date}</span>
+    </div>
+<div> <p>  {manage?.thumbnail}</p></div>
+    <div className="card-actions justify-end mt-4 space-x-2">
+      <Link to={`/update/${manage._id}`}>
+        <button className="btn">Update</button>
+      </Link>
+      <button 
+        onClick={() => handleDelete(manage._id)} 
+        className="btn "
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+
+
+
+</div>
+
+ 
+
+
+
+</>
+
+    )
+};
+
+export default ManageCard;
