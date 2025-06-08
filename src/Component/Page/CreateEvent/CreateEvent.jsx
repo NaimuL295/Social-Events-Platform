@@ -13,15 +13,16 @@ const [selectedDate, setSelectedDate] = useState(new Date());
           e.preventDefault();
   const from=e.target;
   const fromData=new FormData(from);
-  const {data
+  const data=Object.fromEntries(fromData.entries())
 // title,
 // description,
 // events,thumbnail,location
-  }=Object.fromEntries(fromData.entries())
+  
 
 //console.log(title, description ,events,location, selectedDate);
 // title,description,events,thumbnail,location ,date:startDate
 
+console.log();
 
 
 

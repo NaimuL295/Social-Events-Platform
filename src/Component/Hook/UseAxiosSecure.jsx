@@ -1,32 +1,36 @@
+
+
+
 import axios from 'axios';
-import React from 'react';
-import { use } from 'react';
+import React, { use } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 
-    const axiosInstance = axios.create({
- baseURL: 'http://localhost:3000',
-  withCredentials:true
+const axiosInstance = axios.create({
+  baseURL:"http://localhost:3000",
+ withCredentials:true
 });
-const UseAxiosSecure = () => {
 
+const useAxiosSecure = () => {
 const {logout}=use(AuthContext)
-axiosInstance.interceptors.response.use(
-    (response)=>  response
-        , (error)=>{
-  const status=error.response?.status;
-  if (status === 4001 ||status === 4003) {
-    logout().then((result) => {
-    console.log(result);
-        
-    }).catch((err) => {
-        console.log(err);
-        
-    });
-  }
-  
-  return Promise.reject(error);
-  });
-    return axiosInstance
+
+ axiosInstance.interceptors.response.use(
+    (response) => response, // Success: pass through
+    (error) => {
+      const status = error.response?.status;
+
+      if (status === 401 || status === 403) {
+        // Logout without async/await
+      logout()
+          .then(() => console.log('User logged out (401/403)'))
+          .catch((err) => console.error('Logout failed:', err));
+      }
+
+      return Promise.reject(error); // Always reject to propagate the error
+    }
+  );
+
+    return axiosInstance;
 };
 
-export default UseAxiosSecure;
+export default useAxiosSecure;
+

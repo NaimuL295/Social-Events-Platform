@@ -29,34 +29,28 @@ return signInWithPopup(auth, googleProvider)
 
 // // return const user = auth.currentUser;
 //     }
-useEffect(()=>{
- const sub= onAuthStateChanged(auth,currentUser => {
 
- setUser(currentUser)
- 
+useEffect(() => {
+  const unsubscribe = onAuthStateChanged(auth, currentUser => {
+    setUser(currentUser);
 
-if (user?.email) {
- axios.post("http://localhost:3000/jwt" ,
-  {
-    email:currentUser?.email,
-  },
-  {
-    withCredentials: true 
-  }
-).then((result) => {
-    console.log(result.data);
-    
-}).catch((err) => {
-  console.log(err);
-    
-});
-}
-    setLoading(false)
-});
-return ()=>{
-    sub()
-}
-},[])
+    if (currentUser?.email) {
+      axios.post("http://localhost:3000/jwt",
+        { email: currentUser.email },
+        { withCredentials: true }
+      ).then((result) => {
+        console.log("JWT SET:", result.data);
+      }).catch((err) => {
+        console.error("JWT ERROR:", err);
+      });
+    }
+
+    setLoading(false);
+  });
+
+  return () => unsubscribe();
+}, []);
+
     const userInfo={
         user,
         setUser,

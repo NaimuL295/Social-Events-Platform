@@ -1,17 +1,18 @@
 
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthContext';
-
+import useAxiosSecure from "../../Hook/useAxiosSecure"
 import JoinCard from '../../Share/JoinCard';
-import UseAxiosSecure from '../../Hook/UseAxiosSecure';
+
 
 const JoinEvent = () => {
     const [join,setJoin]=useState([])
+  const axiosSecure=useAxiosSecure()
 const {user}=use(AuthContext)
 // userax
     useEffect(()=>{
         if (!user?.email) return
-UseAxiosSecure.get(`http://localhost:3000/event-join?emailParams=${user?.email}`).then((result) => {
+axiosSecure.get(`/event-join?emailParams=${user?.email}`).then((result) => {
     
  setJoin(result.data)
     
@@ -19,7 +20,7 @@ UseAxiosSecure.get(`http://localhost:3000/event-join?emailParams=${user?.email}`
     console.log(err);
     
 });
-    },[])
+    },[user,axiosSecure])
 console.log(join);
 
     return (
