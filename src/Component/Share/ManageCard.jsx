@@ -33,7 +33,7 @@ const ManageCard = ({manage}) => {
       <MdOutlineDateRange />
       <span className="ml-2 ">{manage?.date}</span>
     </div>
-<div> <p>  {manage?.thumbnail}</p></div>
+<div> <p>  {manage?.description}</p></div>
     <div className="card-actions justify-end mt-4 space-x-2">
       <Link to={`/update/${manage._id}`}>
         <button className="btn">Update</button>

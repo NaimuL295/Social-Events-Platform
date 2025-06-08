@@ -1,11 +1,12 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate,  } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
-const {userCreate,googleSign}=use(AuthContext)
+  const navigate=useNavigate()
+const {userCreate,googleSign,Profile, setUser}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
 const handlerRegister=(e)=>{
   e.preventDefault();
@@ -17,13 +18,33 @@ console.log(name,email,photo,password);
 
 userCreate(email,password).then((result) => {
   console.log(result);
+  const res=result.user
+
+  Profile({  displayName:name,photoURL:photo}).then(() => {
+		   setUser({...res,displayName:name,photoURL:photo}).then((result) => {
+        console.log(result);
+       navigate("/")
+        
+       }).catch((err) => {
+        console.log(err);
+        
+       });
+		
+  setUser()
+}).catch((err) => {
+  console.log(err);
+  
+});
+
+
+}).then((result) => {
+  console.log(result);
   
 }).catch((err) => {
   console.log(err);
   
 });
 }
-
 const handlerGoogle=()=>{
   googleSign()
 }

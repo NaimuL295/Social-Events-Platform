@@ -5,7 +5,6 @@ import ManageCard from '../../Share/ManageCard';
 import useAxiosSecure from '../../Hook/useAxiosSecure';
 import { AuthContext } from '../../Context/AuthContext';
 
-
 const ManageEvent = () => {
     const [mangoUser,setMango]=useState([])
    const {user}=use(AuthContext)

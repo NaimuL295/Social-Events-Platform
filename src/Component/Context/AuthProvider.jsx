@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from './Auth';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, 
-    signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+    signInWithEmailAndPassword, signInWithPopup, signOut, 
+    updateProfile} from 'firebase/auth';
 import { AuthContext } from './AuthContext';
 import axios from 'axios';
 const googleProvider=new GoogleAuthProvider();;
@@ -25,11 +26,10 @@ return signInWithPopup(auth, googleProvider)
     const logout=()=>{
    return signOut(auth)
     }
-//     const Profile=()=>{
+    const Profile=(update)=>{
 
-// // return const user = auth.currentUser;
-//     }
-
+ return updateProfile(auth.currentUser,update)
+    }
 useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, currentUser => {
     setUser(currentUser);
@@ -44,13 +44,11 @@ useEffect(() => {
         console.error("JWT ERROR:", err);
       });
     }
-
     setLoading(false);
   });
 
   return () => unsubscribe();
 }, []);
-
     const userInfo={
         user,
         setUser,
@@ -58,7 +56,8 @@ useEffect(() => {
         userLogin,
           googleSign,
        logout,
-       loading
+       loading,
+       Profile
     }
     return (
        <AuthContext value={userInfo}>{ children }  </AuthContext>

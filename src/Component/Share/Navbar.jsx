@@ -3,7 +3,7 @@
 import { use } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { Link, NavLink } from "react-router";
-
+import icon from"../../assets/icons8..png"
 
 const Navbar = () => {
   const { user, logout } = use(AuthContext);
@@ -40,40 +40,10 @@ const handleLogout = () => {
     </div>
 
      <div className="flex-1   ">
-     <svg width={200} height={59 * 0.6} viewBox="0 0 500 300">
-    {/* Leaf icon */}
-    <path 
-      d="M100,150 Q200,50 300,150 Q400,250 100,150 Z" 
-      fill="#4CAF50"
-      stroke="#2E7D32"
-      strokeWidth="8"
-    />
+     
+   <img  className="max-sm:hidden  w-[60px] h-[45px] "src={icon} alt="" ></img>
+
     
-    {/* Text */}
-    <text 
-      x="250" 
-      y="200" 
-      fontFamily="'Arial Rounded MT Bold', sans-serif"
-      fontSize="80" 
-      fill="#333"
-      textAnchor="middle"
-      fontWeight="bold"
-    >
- Social Events
-    </text>
-    
-    {/* Tagline */}
-    <text 
-      x="250" 
-      y="240" 
-      fontFamily="Arial, sans-serif"
-      fontSize="24" 
-      fill="#666"
-      textAnchor="middle"
-    >
-      Grow Together
-    </text>
-  </svg>
         {/* <NavLink   to="/" className=" max-sm:hidden  text-2xl font-bold text-primary">
           Social Events
         </NavLink> */}

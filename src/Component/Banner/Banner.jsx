@@ -1,22 +1,14 @@
 import React from 'react';
 import { color, motion } from "motion/react"
-
+import banner from "../../assets/banner.jpg"
 const Banner = () => {
   
    return(
 <>
-<div className=' p-20 w-12/12 mx-auto '>  
+<div className='   mx-auto '>  
 <motion.div
-  className="hero min-h-screen "
-  style={{
-    backgroundImage:
-      "url(https://i.ibb.co/v4r0WZbM/pexels-photo-4763942.webp)",
-  }}
-
-   initial={{ scale: 1 }}
-          animate={{
-            scale: [1, 1.05, 1],
-          }}
+  className="hero min-h-screen  "
+ style={{ backgroundImage: `url(${banner})` }}
           transition={{
             duration: 15,
             repeat: Infinity,
