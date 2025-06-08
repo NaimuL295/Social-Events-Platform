@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { use } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../../Context/AuthContext';
+import Swal from 'sweetalert2';
 const CreateEvent = () => {
   const {user}=use(AuthContext)
 const [selectedDate, setSelectedDate] = useState(new Date());
@@ -19,14 +21,31 @@ const [selectedDate, setSelectedDate] = useState(new Date());
 
 //console.log(title, description ,events,location, selectedDate);
 // title,description,events,thumbnail,location ,date:startDate
+
+
+
+
+  if (!data.title || !data.description || !data.eventType || !data.thumbnail || !data.location) {
+    return toast.error("All fields must be filled");
+
+}
 axios.post("http://localhost:3000/event",
   {...data, date:selectedDate, email:user?.email})
 .then((result) => {
   console.log(result.data);
+
+ 
+
+Swal.fire({
+  title: " The event will be created successfully",
+  icon: "success",
+  draggable: true
+});
 }).catch((err) => {
   console.log(err);
   
 });
+
     }
     return (
     <div className="max-w-2xl mx-auto p-6  rounded-lg shadow-md">
@@ -42,7 +61,7 @@ axios.post("http://localhost:3000/event",
             type="text"
           name='title'
             className='w-full px-3 py-2 border rounded-md '
-            placeholder="Event Title"
+          required  placeholder="Event Title"
           />
          
         </div>
@@ -56,7 +75,7 @@ axios.post("http://localhost:3000/event",
           name='description'
             rows={4}
             className='w-full px-3 py-2 border rounded-md '
-            placeholder="Describe your event in detail..."
+           required placeholder="Describe your event in detail..."
           />
          
         </div>
@@ -91,7 +110,7 @@ axios.post("http://localhost:3000/event",
           <input  name='thumbnail' type="url"
           className="w-full px-3 py-2 border border-gray-300 rounded-md"
             placeholder="https://example.com/image.jpg"
-          />
+         required />
           <p className="mt-1 text-xs text-gray-500">
             Provide a direct link to your event image   </p>
         </div>
@@ -102,7 +121,7 @@ axios.post("http://localhost:3000/event",
             Location *
           </label>
           <input type="text"   name='location'  className='w-full px-3 py-2 border rounded-md'
-            placeholder="Enter Your   Location "
+         required  placeholder="Enter Your   Location "
           />
          
         </div>
@@ -118,12 +137,13 @@ axios.post("http://localhost:3000/event",
       timeInputLabel="Time:"
       dateFormat="MM/dd/yyyy h:mm aa"
       showTimeInput
-       placeholderText="Select Event date"
+     required  placeholderText="Select Event date"
     />
   
 
         </div>
         <div className=" btn">
+          <ToastContainer></ToastContainer>
           <button
             type="submit"> Submitting  </button>
         </div>

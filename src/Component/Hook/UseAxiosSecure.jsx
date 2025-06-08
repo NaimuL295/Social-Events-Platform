@@ -10,8 +10,6 @@ import { AuthContext } from '../Context/AuthContext';
 const UseAxiosSecure = () => {
 
 const {logout}=use(AuthContext)
-
-
 axiosInstance.interceptors.response.use(
     (response)=>  response
         , (error)=>{

@@ -8,6 +8,7 @@ const ManageEvent = () => {
 
     useEffect(()=>{
        if (!user)return
+       //use userax
         axios.get(`http://localhost:3000/event-join?emailParams=${user?.email}`).then((result) => {
             setMango(result.data)
         }).catch((err) => {

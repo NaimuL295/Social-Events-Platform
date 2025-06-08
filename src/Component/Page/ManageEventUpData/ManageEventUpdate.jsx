@@ -1,11 +1,13 @@
 
  import axios from 'axios';
+ import { ToastContainer, toast } from 'react-toastify';
 import React, { use } from 'react';
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../../Context/AuthContext';
 import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 const ManageEventUpdate = () => {
      const {user}=use(AuthContext)
      const data=useLoaderData()
@@ -20,10 +22,22 @@ const ManageEventUpdate = () => {
 
 // console.log(title, description ,events,location, selectedDate);
 // title,description,events,thumbnail,location ,date:startDate
+
+  if (!data.title || !data.description || !data.eventType || !data.thumbnail || !data.location) {
+    return toast.error("All fields must be filled");
+
+}
+
 axios.put("http://localhost:3000/event",
   {...data, date:selectedDate, email:user?.email})
 .then((result) => {
   console.log(result.data);
+  
+  Swal.fire({
+    title: " The event will be Update successfully",
+    icon: "success",
+    draggable: true
+  });
 }).catch((err) => {
   console.log(err);
 });
@@ -92,7 +106,7 @@ axios.put("http://localhost:3000/event",
           
             className="w-full px-3 py-2 border border-gray-300 rounded-md"
             placeholder="https://example.com/image.jpg"
-          />
+         required  />
           <p className="mt-1 text-xs text-gray-500">
             Provide a direct link to your event image (optional)
           </p>
@@ -108,8 +122,8 @@ axios.put("http://localhost:3000/event",
             type="text"
          name='location'
             className='w-full px-3 py-2 border rounded-md'
-            placeholder="Enter Your   Location "
-          />
+         placeholder="Enter Your   Location "
+          required   />
          
         </div>
 
@@ -125,11 +139,12 @@ axios.put("http://localhost:3000/event",
       timeInputLabel="Time:"
       dateFormat="MM/dd/yyyy h:mm aa"
       showTimeInput
-       placeholderText="Select Event date"
+   required    placeholderText="Select Event date"
     />
 
         </div>
         <div className=" btn">
+        <ToastContainer></ToastContainer>
           <button
             type="submit"> Submitting  </button>
         </div>
