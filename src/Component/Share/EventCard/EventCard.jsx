@@ -21,11 +21,11 @@ const EventCard = ({eventsData}) => {
         </div>
         <div className="flex items-center mt-2">
          <IoLocationOutline></IoLocationOutline>
-          <span className="ml-2 ">{eventsData?.location}</span>
+        <span className="ml-2 text-base">{eventsData?.location}</span>
         </div>
         <div className="flex items-center mt-2">
            <MdOutlineDateRange></MdOutlineDateRange>
-          <span className="ml-2 ">{eventsData?.date}</span>
+          <span className="ml-2 text-base">{eventsData?.date}</span>
           
         </div>
        
