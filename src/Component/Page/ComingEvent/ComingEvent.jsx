@@ -21,8 +21,8 @@ then((result) => {
  
     return (
     <> 
-        <div className='w-7xl mx-auto my-3.5'>
-          <div className='my-5'>
+        <div className='w-9/12 mx-auto my-3.5'>
+          <div className='my-5 space-x-1 flex'>
 <label className="input">
   <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
@@ -48,15 +48,13 @@ then((result) => {
     placeholder="Search"
   />
 
-
-
-</label></div>
-         <div className='grid lg:grid-cols-3 w-9/12 mx-auto gap-6'>  
+</label>  <button className='btn bg-green-500' type='submit'>Submit</button >    </div></div> 
+         <div className='grid lg:grid-cols-3 md:grid-cols-2 mx-auto w-10/12 gap-6'>  
         {eventData.map(eventsData=>
            <EventCard key={eventsData._id} eventsData={eventsData}></EventCard>
         )}
 
-             </div> 
+             
         </div>
          </>      
     );

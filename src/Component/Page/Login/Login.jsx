@@ -1,11 +1,12 @@
 import React, { use, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
 Link
 const Login = () => {
+  const navigate=useNavigate()
 const {userLogin,googleSign}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
 const handlerLogin=(e)=>{
@@ -16,7 +17,7 @@ const handlerLogin=(e)=>{
 console.log(email,password);
 userLogin(email,password).then((result) => {
   console.log(result);
-  
+    navigate("/")
 }).catch((err) => {
   console.log(err);
   

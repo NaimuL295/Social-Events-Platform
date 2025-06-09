@@ -6,7 +6,7 @@ const EventCard = ({eventsData}) => {
     console.log(eventsData);
    
     return (
-    <div className="card w-80 bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+    <div className="card max-w-96 bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
       <figure>
         <img 
           src={eventsData?.thumbnail} 
@@ -21,15 +21,17 @@ const EventCard = ({eventsData}) => {
         </div>
         <div className="flex items-center mt-2">
          <IoLocationOutline></IoLocationOutline>
-          <span className="ml-2 text-gray-600">{eventsData?.location}</span>
+          <span className="ml-2 ">{eventsData?.location}</span>
         </div>
         <div className="flex items-center mt-2">
-          <span className="ml-2 text-gray-600">{eventsData?.date}</span>
+           <MdOutlineDateRange></MdOutlineDateRange>
+          <span className="ml-2 ">{eventsData?.date}</span>
+          
         </div>
-        <MdOutlineDateRange></MdOutlineDateRange>
+       
         <div className="card-actions justify-end mt-4">
         <Link to={`/details/${eventsData._id}`}>   <button className="btn btn-primary">
-       view event
+       View event
           </button>  </Link>
         </div>
       </div>

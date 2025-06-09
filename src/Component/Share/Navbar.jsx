@@ -15,7 +15,7 @@ const handleLogout = () => {
     }
   };
   return (
-    <div className="navbar bg-base-100 shadow-md px-8  mx-auto">
+    <div className="navbar bg-base-100 shadow-md px-8 py-6  mx-auto">
 
     <div className="md:hidden   dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -30,7 +30,7 @@ const handleLogout = () => {
           Social Events
         </NavLink>
 
-       <li> <NavLink to="/events" className="  btn  text-base">
+       <li> <NavLink to="/comingEvent" className="  btn  text-base">
           Upcoming Events
         </NavLink></li>
           </ul>

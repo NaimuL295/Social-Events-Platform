@@ -20,14 +20,14 @@ const JoinCard = ({join}) => {
         
         <div className="flex items-center mt-2">
          <IoLocationOutline></IoLocationOutline>
-          <span className="ml-2 text-gray-600">{join?.location}</span>
+          <span className="ml-2  text-base">{join?.location}</span>
         </div>
         
         <div className="flex items-center mt-2">
-       
-          <span className="ml-2 text-gray-600">{join?.date}</span>
+         <MdOutlineDateRange ></MdOutlineDateRange>
+          <span className="ml-2 text-base">{join?.date}</span>
         </div>
-        <MdOutlineDateRange></MdOutlineDateRange>
+      
         <p>{join?.description}</p>
       </div>
     </div>

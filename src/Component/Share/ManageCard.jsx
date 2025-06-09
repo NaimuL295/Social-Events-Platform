@@ -26,12 +26,12 @@ const ManageCard = ({manage}) => {
 
     <div className="flex items-center mt-2">
       <IoLocationOutline />
-      <span className="ml-2 ">{manage?.location}</span>
+      <span className="ml-2 text-base">{manage?.location}</span>
     </div>
 
     <div className="flex items-center mt-2">
       <MdOutlineDateRange />
-      <span className="ml-2 ">{manage?.date}</span>
+      <span className="ml-2 text-base">{manage?.date}</span>
     </div>
 <div> <p>  {manage?.description}</p></div>
     <div className="card-actions justify-end mt-4 space-x-2">

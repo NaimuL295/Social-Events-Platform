@@ -135,9 +135,10 @@ Swal.fire({
   <DatePicker
       selected={selectedDate}
       onChange={(date) => setSelectedDate(date)}
-      timeInputLabel="Time:"
-      dateFormat="MM/dd/yyyy h:mm aa"
-      showTimeInput
+      // timeInputLabel="Time:"
+      // dateFormat="MM/dd/yyyy h:mm aa"
+      // showTimeInput
+      dateFormat="MMM dd yyyy h:mm aa"
      required  placeholderText="Select Event date"
     />
   
