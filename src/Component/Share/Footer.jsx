@@ -1,6 +1,6 @@
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'react-router';
-
+import icon from"../../assets/icons8..png"
 const Footer = () => {
   return (
     <footer className="  pt-8 pb-5">
@@ -9,9 +9,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-2">
           <div className="space-y-4">
             <div className="flex items-center">
-              <span className="text-4xl mr-2 text-green-400">🌱</span>
+           <img  className="  w-[60px] h-[45px] "src={icon} alt="" ></img>
               <h2 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-                CommunityConnect
+               ServeSync
               </h2>
             </div>
             <div className="flex space-x-3">
@@ -53,7 +53,7 @@ const Footer = () => {
           {/* Newsletter */}
           <div>
             <h3 className="text-lg font-semibold mb-4 text-green-400">Stay Updated</h3>
-            <p className="text-gray-300 mb-4">
+            <p className=" mb-4">
               Subscribe to our newsletter for the latest events and updates.
             </p>
 

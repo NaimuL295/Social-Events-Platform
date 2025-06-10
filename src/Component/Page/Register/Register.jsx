@@ -3,34 +3,49 @@ import { Link, useNavigate,  } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-
+  import { ToastContainer, toast } from 'react-toastify';
 const Register = () => {
-  const navigate=useNavigate()
-const {userCreate,googleSign,Profile, setUser}=use(AuthContext)
+    const navigate=useNavigate()
+const {userCreate,googleSign,updateUser, setUser}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
 const handlerRegister=(e)=>{
   e.preventDefault();
   const from=e.target;
   const fromData=new FormData(from);
-  const {name ,email ,photo,password }=Object.fromEntries(fromData.entries())
-console.log(name,email,photo,password);
+  const {name ,email,photo,password }=Object.fromEntries(fromData.entries())
+// console.log(name,email,photo,password);
 
+if (!email) {
+    toast.error("Enter You Email")
+    return
+} if (password.length < 6) {
+      toast.error(" Length must be at least 6 characters");
+      return;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      toast.error(" Must have an Uppercase letter in the password");
+      return;
+    }
+
+    if (!/[a-z]/.test(password)) {
+    return  toast.error("Must have a Lowercase letter in the password");
+    }
 
 userCreate(email,password).then((result) => {
-  console.log(result);
+  navigate("/")
+  // console.log(result);
   const res=result.user
 
-  Profile({  displayName:name,photoURL:photo}).then(() => {
+  updateUser({displayName:name,photoURL:photo}).then(() => {
 		   setUser({...res,displayName:name,photoURL:photo}).then((result) => {
         console.log(result);
-       navigate("/")
+       
         
        }).catch((err) => {
         console.log(err);
         
        });
-		
-  setUser()
 }).catch((err) => {
   console.log(err);
   
@@ -46,7 +61,11 @@ userCreate(email,password).then((result) => {
 });
 }
 const handlerGoogle=()=>{
-  googleSign()
+   setTimeout(() => {
+   googleSign()
+    navigate("/")
+  },1000);
+   
 }
     return (  
         <div>
@@ -82,7 +101,7 @@ const handlerGoogle=()=>{
 		<Link to="/login"> Login now </Link>	
 			</p>
 
- 
+ <ToastContainer></ToastContainer>
        <div>
        
 

@@ -26,10 +26,7 @@ return signInWithPopup(auth, googleProvider)
     const logout=()=>{
    return signOut(auth)
     }
-    const Profile=(update)=>{
-
- return updateProfile(auth.currentUser,update)
-    }
+  
 useEffect(() => {
   const unsubscribe = onAuthStateChanged(auth, currentUser => {
     setUser(currentUser);
@@ -49,6 +46,11 @@ useEffect(() => {
 
   return () => unsubscribe();
 }, []);
+
+const updateUser=(updata)=>{
+    return  updateProfile(auth.currentUser,updata)
+  }
+
     const userInfo={
         user,
         setUser,
@@ -57,7 +59,7 @@ useEffect(() => {
           googleSign,
        logout,
        loading,
-       Profile
+     updateUser
     }
     return (
        <AuthContext value={userInfo}>{ children }  </AuthContext>

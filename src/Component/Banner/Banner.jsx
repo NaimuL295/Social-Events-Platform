@@ -24,11 +24,11 @@ const Banner = () => {
         transition={{ duration: 0.8 }}
     >
     <motion.h1 
-    className="mb-5 text-4xl font-bold">  Empower Your <motion.span
+    className="mb-5 text-5xl font-bold"> Discover Amazing <motion.span
     animate={{color:["#06b90f ","#549857 " ,"#0fdc18 ","#16b91e ","#16cd00 "],
     transition:{duration:4, repeat:Infinity}
-    }}>Community</motion.span>  </motion.h1>
-      
+    }}>Community</motion.span>   Events </motion.h1>
+     
       <p className="mb-5  text-base">
       Connect with passionate individuals and make a real difference in your local area. Be part of a
        growing movement of changemakers creating greener, kinder, and more inclusive communities.

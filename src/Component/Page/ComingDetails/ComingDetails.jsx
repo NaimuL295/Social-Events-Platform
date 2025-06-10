@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 const ComingDetails = () => {
     const {user}=use(AuthContext)
     const data=useLoaderData()
-    const newData=data.data
+    const newData=data?.data
 
 
 
@@ -21,7 +21,9 @@ Swal.fire({
   draggable: true
 });
     }).catch((err) => {
-        console.log(err);
+       if (err.response?.status === 409) {
+        alert("You have already joined this event.");
+      }
         
     });
     }

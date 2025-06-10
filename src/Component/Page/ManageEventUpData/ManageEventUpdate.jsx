@@ -10,15 +10,15 @@ import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 const ManageEventUpdate = () => {
      const {user}=use(AuthContext)
-     const data=useLoaderData()
-     console.log(data);
-     
+     const manage=useLoaderData()
+  
+     const manageDate=manage.data
    const [selectedDate, setSelectedDate] = useState(new Date());
        const handleUpdate=(e)=>{
              e.preventDefault();
      const from=e.target;
      const fromData=new FormData(from);
-     const {data}=Object.fromEntries(fromData.entries())
+     const data=Object.fromEntries(fromData.entries())
 
 // console.log(title, description ,events,location, selectedDate);
 // title,description,events,thumbnail,location ,date:startDate
@@ -28,7 +28,7 @@ const ManageEventUpdate = () => {
 
 }
 
-axios.put("http://localhost:3000/event",
+axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
   {...data, date:selectedDate, email:user?.email})
 .then((result) => {
   console.log(result.data);
@@ -44,7 +44,7 @@ axios.put("http://localhost:3000/event",
     }
     return (
     <div className="max-w-2xl mx-auto p-6  rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold  mb-6">Create New Event</h2>
+      <h2 className="text-2xl font-bold  mb-6">Update Event</h2>
       <form onSubmit={handleUpdate} className="space-y-6">
         {/* Title */}
         <div>

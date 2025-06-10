@@ -3,8 +3,6 @@ import { Link } from 'react-router';
   import { MdOutlineDateRange } from "react-icons/md";
   import { IoLocationOutline } from "react-icons/io5";
 const EventCard = ({eventsData}) => {
-    console.log(eventsData);
-   
     return (
     <div className="card max-w-96 bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
       <figure>
@@ -30,7 +28,7 @@ const EventCard = ({eventsData}) => {
         </div>
        
         <div className="card-actions justify-end mt-4">
-        <Link to={`/details/${eventsData._id}`}>   <button className="btn btn-primary">
+        <Link to={`/details/${eventsData._id}`}>   <button className="btn bg-green-500 text-white">
        View event
           </button>  </Link>
         </div>

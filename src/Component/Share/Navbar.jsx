@@ -17,7 +17,7 @@ const handleLogout = () => {
   return (
     <div className="navbar bg-base-100 shadow-md px-8 py-6  mx-auto">
 
-    <div className="md:hidden   dropdown">
+    <div className="   min-lg:hidden  md:hidden    dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
       </div>
@@ -39,11 +39,13 @@ const handleLogout = () => {
       </ul>
     </div>
 
-     <div className="flex-1   ">
-     
+     <div className="flex-1 flex items-center  ">
+   
    <img  className="max-sm:hidden  w-[60px] h-[45px] "src={icon} alt="" ></img>
 
-    
+      <h2 className=" max-sm:hidden  text-xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+               ServeSync
+              </h2>
         {/* <NavLink   to="/" className=" max-sm:hidden  text-2xl font-bold text-primary">
           Social Events
         </NavLink> */}
@@ -82,10 +84,10 @@ const handleLogout = () => {
         {!user ? <>
 <ul className="flex gap-2">
  
-         <li>   <Link to="/login" className="btn btn-primary">
+         <li>   <Link to="/login" className="btn bg-green-600 text-white">
             Login
       </Link> </li> 
-<li>  <Link to="/register" className="btn   btn-primary">
+<li>  <Link to="/register" className="btn  bg-green-600 text-white">
            Register
           </Link> </li>
 </ul>
