@@ -9,39 +9,39 @@ import Swal from 'sweetalert2';
 const ManageCard = ({manage}) => {
   const [manageEvent,setManageEvent]=useState([])
     console.log(manage);
-//     const handleDelete=(id)=>{
+    const handleDelete=(id)=>{
 
-// Swal.fire({
-//   title: "Are you sure?",
-//   text: "You won't be able to revert this!",
-//   icon: "warning",
-//   showCancelButton: true,
-//   confirmButtonColor: "#3085d6",
-//   cancelButtonColor: "#d33",
-//   confirmButtonText: "Yes, delete it!"
-// }).then((result) => {
-//   if (result.isConfirmed) {
-//   axios.delete(`https://server-side-omega-umber.vercel.app/event-delate/${id}`).then((result) => {
-//           console.log(result.data);
-//           toast.error("Deleted Successfully")
-//         }).catch((err) => {
-//           console.log(err);
+Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+  axios.delete(`https://server-side-omega-umber.vercel.app/event-delate/${id}`).then((result) => {
+          console.log(result.data);
+          toast.error("Deleted Successfully")
+        }).catch((err) => {
+          console.log(err);
           
-//         });
+        });
 
-//     Swal.fire({
-//       title: "Deleted!",
-//       text: "Your file has been deleted.",
-//       icon: "success"
-//     });
-//   }
-// });
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  }
+});
 
-//    const remaining=manageEvent.filter(use=>use._id!==id);
-// setManageEvent(remaining)
+   const remaining=manageEvent.filter(use=>use._id!==id);
+setManageEvent(remaining)
 
       
-//     }
+     }
     return(
       <>     
 <div className="card w-80 bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
