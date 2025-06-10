@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
 const ManageCard = ({manage}) => {
- // const [manageEvent,setManageEvent]=useState([])
+  const [manageEvent,setManageEvent]=useState([])
     console.log(manage);
 //     const handleDelete=(id)=>{
 
