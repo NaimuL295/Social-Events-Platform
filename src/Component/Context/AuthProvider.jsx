@@ -32,7 +32,7 @@ useEffect(() => {
     setUser(currentUser);
 
     if (currentUser?.email) {
-      axios.post("http://localhost:3000/jwt",
+      axios.post("https://server-side-omega-umber.vercel.app/jwt",
         { email: currentUser.email },
         { withCredentials: true }
       ).then((result) => {

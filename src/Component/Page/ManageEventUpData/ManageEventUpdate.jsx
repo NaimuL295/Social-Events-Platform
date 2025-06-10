@@ -6,14 +6,18 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../../Context/AuthContext';
+import { setHours, setMinutes } from 'date-fns';
 import { useLoaderData } from 'react-router';
+
 import Swal from 'sweetalert2';
 const ManageEventUpdate = () => {
      const {user}=use(AuthContext)
      const manage=useLoaderData()
   
      const manageDate=manage.data
-   const [selectedDate, setSelectedDate] = useState(new Date());
+   const [selectedDateTime, setSelectedDateTime] = useState(
+    setHours(setMinutes(new Date(), 30), 17),
+  );
        const handleUpdate=(e)=>{
              e.preventDefault();
      const from=e.target;
@@ -27,12 +31,11 @@ const ManageEventUpdate = () => {
     return toast.error("All fields must be filled");
 
 }
-
-axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
-  {...data, date:selectedDate, email:user?.email})
+axios.put(`https://server-side-omega-umber.vercel.app/event-update/${manageDate._id}`,
+  {...data, date:selectedDateTime, email:user?.email})
 .then((result) => {
   console.log(result.data);
-  
+
   Swal.fire({
     title: " The event will be Update successfully",
     icon: "success",
@@ -133,14 +136,19 @@ axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
             Event Date & Time *
           </label>
 
-  <DatePicker
-      selected={selectedDate}
-      onChange={(date) => setSelectedDate(date)}
-      timeInputLabel="Time:"
-      dateFormat="MM/dd/yyyy h:mm aa"
-      showTimeInput
-   required    placeholderText="Select Event date"
-    />
+ <DatePicker
+      
+       selected={selectedDateTime}
+       onChange={(date) => setSelectedDateTime(date)}
+       showTimeSelect
+       minTime={setHours(setMinutes(new Date(), 0), 17)}
+       maxTime={setHours(setMinutes(new Date(), 30), 20)}
+       dateFormat="MMMM d, yyyy h:mm aa"
+     
+    //
+      required  placeholderText="Select Event date"
+     />
+   
 
         </div>
         <div className=" btn">

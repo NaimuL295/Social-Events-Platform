@@ -6,9 +6,15 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
+import { setHours, setMinutes } from 'date-fns';
 const CreateEvent = () => {
   const {user}=use(AuthContext)
-const [selectedDate, setSelectedDate] = useState(new Date());
+// const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDateTime, setSelectedDateTime] = useState(
+    setHours(setMinutes(new Date(), 30), 17),
+  );
+   
+
     const handleCreate=(e)=>{
           e.preventDefault();
   const from=e.target;
@@ -30,8 +36,8 @@ console.log();
     return toast.error("All fields must be filled");
 
 }
-axios.post("http://localhost:3000/event",
-  {...data, date:selectedDate, email:user?.email})
+axios.post("https://server-side-omega-umber.vercel.app/event",
+  {...data, date:selectedDateTime, email:user?.email})
 .then((result) => {
   console.log(result.data);
 
@@ -84,13 +90,13 @@ Swal.fire({
         {/* Event Type */}
         <div>
 <fieldset className="fieldset">
-  <legend className="fieldset-legend">  Event Type </legend>
+  <legend className="fieldset-legend">  Event Type</legend>
   <select  name="eventType"className="select">
      <option>Select event type</option>
     <option value="cleanup"> Cleanup</option>
     <option value="Plantation">Plantation</option>
     <option value="Donation">Donation</option>
-     <option value="workshop">Workshop</option>
+    <option value="workshop">Workshop</option>
     <option value="seminar">Seminar</option>
     <option value="awareness">Awareness Campaign</option>
     <option value="fundraiser">Fundraiser</option>
@@ -132,13 +138,16 @@ Swal.fire({
           <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
             Event Date & Time * </label>
 
-  <DatePicker
-      selected={selectedDate}
-      onChange={(date) => setSelectedDate(date)}
-      // timeInputLabel="Time:"
-      // dateFormat="MM/dd/yyyy h:mm aa"
-      // showTimeInput
-      dateFormat="MMM dd yyyy h:mm aa"
+     <DatePicker
+
+      selected={selectedDateTime}
+      onChange={(date) => setSelectedDateTime(date)}
+      showTimeSelect
+      minTime={setHours(setMinutes(new Date(), 0), 17)}
+      maxTime={setHours(setMinutes(new Date(), 30), 20)}
+      dateFormat="MMMM d, yyyy h:mm aa"
+    
+   //
      required  placeholderText="Select Event date"
     />
   

@@ -30,7 +30,7 @@ console.log(mangoUser.email);
    return (
         <>
       
-         <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-4 my-4'>
+         <div className='w-9/12   grid lg:grid-cols-3 md:grid-cols-2 gap-6 my-4 mx-auto'>
      {mangoUser.map(manage=>
          <ManageCard  key={manage._id} manage={manage}>
 

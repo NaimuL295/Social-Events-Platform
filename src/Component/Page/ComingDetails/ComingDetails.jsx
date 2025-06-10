@@ -12,20 +12,21 @@ const ComingDetails = () => {
 
 
     const handlerJoin=()=>{
-    axios.post("http://localhost:3000/event-join",{...newData ,email:user?.email}).then((result) => {
-       console.log(result.data);
-       
+    axios.post("https://server-side-omega-umber.vercel.app/event-join-user",{...newData ,email:user?.email}).then((result) => {
+       console.log(result.data);   
 Swal.fire({
   title: "Success",
   icon: "success",
   draggable: true
 });
-    }).catch((err) => {
-       if (err.response?.status === 409) {
-        alert("You have already joined this event.");
-      }
-        
-    });
+    }).
+   
+    catch((err) => {
+    
+        console.log(err);
+       
+    })     
+    
     }
    return (
     <div className="max-w-sm w-full rounded-2xl overflow-hidden shadow-md bg-white p-4 hover:shadow-xl transition-shadow duration-300  my-3.5 ">
