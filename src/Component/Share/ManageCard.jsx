@@ -1,14 +1,15 @@
-import axios from 'axios';
-import React, { useState } from 'react';
+
+
 import { IoLocationOutline } from 'react-icons/io5';
 import { MdOutlineDateRange } from 'react-icons/md';
 import { Link } from 'react-router';
- import { ToastContainer, toast } from 'react-toastify';
+
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const ManageCard = ({manage}) => {
-  const [manageEvent,setManageEvent]=useState([])
     console.log(manage);
+  
     const handleDelete=(id)=>{
 
 Swal.fire({
@@ -21,26 +22,29 @@ Swal.fire({
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-  axios.delete(`https://server-side-omega-umber.vercel.app/event-delate/${id}`).then((result) => {
+  axios.delete(`http://localhost:3000/event-delete/${id}`).then((result) => {
           console.log(result.data);
-          toast.error("Deleted Successfully")
+
+//     const remaining=mangoUser.filter(us=>us._id!==id);
+//  setMango(remaining)
+
+  Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+
         }).catch((err) => {
           console.log(err);
           
         });
 
-    Swal.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
-    });
+  
   }
 });
 
-   const remaining=manageEvent.filter(use=>use._id!==id);
-setManageEvent(remaining)
 
-      
+   
      }
     return(
       <>     
@@ -73,12 +77,14 @@ setManageEvent(remaining)
       <Link to={`/update/${manage._id}`}>
         <button className="btn">Update</button>
       </Link>
-      <div><button 
+      <div>
+        <button 
         onClick={() => handleDelete(manage._id)} 
         className="btn "
       >
         Delete
-      </button>  <ToastContainer></ToastContainer> </div>
+      </button> 
+      </div>
     </div>
   </div>
 

@@ -7,7 +7,9 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../../Context/AuthContext';
 import Swal from 'sweetalert2';
 import { setHours, setMinutes } from 'date-fns';
+import { useNavigate } from 'react-router';
 const CreateEvent = () => {
+    const navigate=useNavigate()
   const {user}=use(AuthContext)
 // const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedDateTime, setSelectedDateTime] = useState(
@@ -36,18 +38,22 @@ console.log();
     return toast.error("All fields must be filled");
 
 }
-axios.post("https://server-side-omega-umber.vercel.app/event",
+axios.post("http://localhost:3000/event",
   {...data, date:selectedDateTime, email:user?.email})
 .then((result) => {
   console.log(result.data);
 
- 
 
 Swal.fire({
   title: " The event will be created successfully",
   icon: "success",
   draggable: true
 });
+
+//   setTimeout(()=>{
+// navigate("/comingEvent")
+//   },1000)
+
 }).catch((err) => {
   console.log(err);
   

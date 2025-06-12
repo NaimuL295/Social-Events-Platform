@@ -25,7 +25,7 @@ const {logout}=use(AuthContext)
           .catch((err) => console.error('Logout failed:', err));
       }
 
-      return Promise.reject(error); // Always reject to propagate the error
+      return Promise.reject(error); 
     }
   );
 

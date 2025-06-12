@@ -33,7 +33,7 @@ if (!email) {
     }
 
 userCreate(email,password).then((result) => {
-  navigate("/")
+  
   // console.log(result);
   const res=result.user
 
@@ -41,7 +41,7 @@ userCreate(email,password).then((result) => {
 		   setUser({...res,displayName:name,photoURL:photo}).then((result) => {
         console.log(result);
        
-        
+        navigate("/")
        }).catch((err) => {
         console.log(err);
         

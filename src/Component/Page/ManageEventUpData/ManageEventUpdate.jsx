@@ -31,7 +31,7 @@ const ManageEventUpdate = () => {
     return toast.error("All fields must be filled");
 
 }
-axios.put(`https://server-side-omega-umber.vercel.app/event-update/${manageDate._id}`,
+axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
   {...data, date:selectedDateTime, email:user?.email})
 .then((result) => {
   console.log(result.data);

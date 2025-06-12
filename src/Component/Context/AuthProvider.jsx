@@ -32,8 +32,8 @@ useEffect(() => {
     setUser(currentUser);
 
     if (currentUser?.email) {
-      axios.post("https://server-side-omega-umber.vercel.app/jwt",
-        { email: currentUser.email },
+      axios.post("http://localhost:3000/jwt",
+        { email: currentUser?.email },
         { withCredentials: true }
       ).then((result) => {
         console.log("JWT SET:", result.data);
