@@ -15,12 +15,13 @@ const {user}=use(AuthContext)
 axiosSecure.get(`/event-join?emailParams=${user?.email}`).then((result) => {
     
  setJoin(result.data)
-    const now = new Date();
-      const upcomingEvents = result.data
-        .filter((event) => new Date(event.date) > now)
-        .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-      setJoin(upcomingEvents);
+const upcomingEvents = result.data
+  .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+setJoin(upcomingEvents);
+setJoin(upcomingEvents);
+
 }).catch((err) => {
     console.log(err);
     

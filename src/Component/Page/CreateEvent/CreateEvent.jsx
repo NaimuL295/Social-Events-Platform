@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router';
 const CreateEvent = () => {
     const navigate=useNavigate()
   const {user}=use(AuthContext)
-// const [selectedDate, setSelectedDate] = useState(new Date());
+
   const [selectedDateTime, setSelectedDateTime] = useState(
     setHours(setMinutes(new Date(), 30), 17),
   );
@@ -50,9 +50,9 @@ Swal.fire({
   draggable: true
 });
 
-//   setTimeout(()=>{
-// navigate("/comingEvent")
-//   },1000)
+  setTimeout(()=>{
+navigate("/comingEvent")
+  },1000)
 
 }).catch((err) => {
   console.log(err);
@@ -149,8 +149,8 @@ Swal.fire({
       selected={selectedDateTime}
       onChange={(date) => setSelectedDateTime(date)}
       showTimeSelect
-      minTime={setHours(setMinutes(new Date(), 0), 17)}
-      maxTime={setHours(setMinutes(new Date(), 30), 20)}
+      Time={setHours(setMinutes(new Date(), 0), 17)}
+     // Time={setHours(setMinutes(new Date(), 30), 20)}
       dateFormat="MMMM d, yyyy h:mm aa"
     
    //

@@ -56,6 +56,7 @@ axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
           </label>
           <input
             id="title"
+            defaultValue={ manageDate.title}
             type="text"
           name='title'
             className='w-full px-3 py-2 border rounded-md '
@@ -69,6 +70,7 @@ axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
           </label>
           <textarea id="description"
           name='description'
+          defaultValue={manageDate.description}
             rows={4}
             className='w-full px-3 py-2 border rounded-md '
             placeholder="Describe your event in detail..."
@@ -80,8 +82,9 @@ axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
 <fieldset className="fieldset">
   <legend className="fieldset-legend">  Event Type </legend>
   <select  name="eventType"className="select">
-    <option   value="">Select an event type</option>
+    <option   defaultValue={manageDate.eventType}>Select an event type</option>
     <option value="cleanup"> Cleanup</option>
+    <option defaultValue={manageDate.eventType}> Cleanup</option>
     <option value="Plantation">Plantation</option>
     <option value="Donation">Donation</option>
        <option value="workshop">Workshop</option>
@@ -103,6 +106,7 @@ axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
             Thumbnail Image URL
           </label>
           <input
+          defaultValue={manageDate.thumbnail}
           name='thumbnail'
             id="thumbnail"
             type="url"
@@ -123,6 +127,7 @@ axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
           <input
             id="location"
             type="text"
+            defaultValue={manageDate.location}
          name='location'
             className='w-full px-3 py-2 border rounded-md'
          placeholder="Enter Your   Location "
@@ -134,6 +139,7 @@ axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
         <div>
           <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
             Event Date & Time *
+            
           </label>
 
  <DatePicker
@@ -141,10 +147,10 @@ axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
        selected={selectedDateTime}
        onChange={(date) => setSelectedDateTime(date)}
        showTimeSelect
-       minTime={setHours(setMinutes(new Date(), 0), 17)}
-       maxTime={setHours(setMinutes(new Date(), 30), 20)}
+      //  minTime={setHours(setMinutes(new Date(), 0), 17)}
+      Time={setHours(setMinutes(new Date(),0,0,))}
        dateFormat="MMMM d, yyyy h:mm aa"
-     
+    //  defaultValue={manageDate.date}
     //
       required  placeholderText="Select Event date"
      />
