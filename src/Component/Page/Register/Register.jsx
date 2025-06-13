@@ -39,9 +39,9 @@ userCreate(email,password).then((result) => {
 
   updateUser({displayName:name,photoURL:photo}).then(() => {
 		   setUser({...res,displayName:name,photoURL:photo}).then((result) => {
+        navigate("/")
         console.log(result);
        
-        navigate("/")
        }).catch((err) => {
         console.log(err);
         

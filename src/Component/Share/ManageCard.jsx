@@ -4,48 +4,48 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { MdOutlineDateRange } from 'react-icons/md';
 import { Link } from 'react-router';
 
-import Swal from 'sweetalert2';
-import axios from 'axios';
+// import Swal from 'sweetalert2';
+// import axios from 'axios';
 
 const ManageCard = ({manage}) => {
     console.log(manage);
   
-    const handleDelete=(id)=>{
+//     const handleDelete=(id)=>{
 
-Swal.fire({
-  title: "Are you sure?",
-  text: "You won't be able to revert this!",
-  icon: "warning",
-  showCancelButton: true,
-  confirmButtonColor: "#3085d6",
-  cancelButtonColor: "#d33",
-  confirmButtonText: "Yes, delete it!"
-}).then((result) => {
-  if (result.isConfirmed) {
-  axios.delete(`http://localhost:3000/event-delete/${id}`).then((result) => {
-          console.log(result.data);
+// Swal.fire({
+//   title: "Are you sure?",
+//   text: "You won't be able to revert this!",
+//   icon: "warning",
+//   showCancelButton: true,
+//   confirmButtonColor: "#3085d6",
+//   cancelButtonColor: "#d33",
+//   confirmButtonText: "Yes, delete it!"
+// }).then((result) => {
+//   if (result.isConfirmed) {
+//   axios.delete(`http://localhost:3000/event-delete/${id}`).then((result) => {
+//           console.log(result.data);
 
-//     const remaining=mangoUser.filter(us=>us._id!==id);
-//  setMango(remaining)
+// //     const remaining=mangoUser.filter(us=>us._id!==id);
+// //  setMango(remaining)
 
-  Swal.fire({
-      title: "Deleted!",
-      text: "Your file has been deleted.",
-      icon: "success"
-    });
+//   Swal.fire({
+//       title: "Deleted!",
+//       text: "Your file has been deleted.",
+//       icon: "success"
+//     });
 
-        }).catch((err) => {
-          console.log(err);
+//         }).catch((err) => {
+//           console.log(err);
           
-        });
+//         });
 
   
-  }
-});
+//   }
+// });
 
 
    
-     }
+//      }
     return(
       <>     
 <div className="card w-80 bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
@@ -78,12 +78,12 @@ Swal.fire({
         <button className="btn">Update</button>
       </Link>
       <div>
-        <button 
+        {/* <button 
         onClick={() => handleDelete(manage._id)} 
         className="btn "
       >
         Delete
-      </button> 
+      </button>  */}
       </div>
     </div>
   </div>
