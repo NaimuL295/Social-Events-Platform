@@ -38,7 +38,7 @@ console.log();
     return toast.error("All fields must be filled");
 
 }
-axios.post("http://localhost:3000/event",
+axios.post("https://brash-celery-production.up.railway.app/event",
   {...data, date:selectedDateTime, email:user?.email})
 .then((result) => {
   console.log(result.data);

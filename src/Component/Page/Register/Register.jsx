@@ -1,11 +1,11 @@
 import React, { use, useState } from 'react';
-import { Link, useNavigate,  } from 'react-router';
+import { Link, useNavigate,   } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
   import { ToastContainer, toast } from 'react-toastify';
 const Register = () => {
-    const navigate=useNavigate()
+ const navigate=useNavigate()
 const {userCreate,googleSign,updateUser, setUser}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
 const handlerRegister=(e)=>{
@@ -38,8 +38,9 @@ userCreate(email,password).then((result) => {
   const res=result.user
 
   updateUser({displayName:name,photoURL:photo}).then(() => {
+     navigate("/")
 		   setUser({...res,displayName:name,photoURL:photo}).then((result) => {
-        navigate("/")
+       
         console.log(result);
        
        }).catch((err) => {

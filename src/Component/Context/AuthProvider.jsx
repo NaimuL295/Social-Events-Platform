@@ -32,7 +32,8 @@ useEffect(() => {
     setUser(currentUser);
 
     if (currentUser?.email) {
-      axios.post("http://localhost:3000/jwt",
+     
+      axios.post("https://brash-celery-production.up.railway.app/jwt",
         { email: currentUser?.email },
         { withCredentials: true }
       ).then((result) => {
@@ -46,6 +47,8 @@ useEffect(() => {
 
   return () => unsubscribe();
 }, []);
+
+
 
 const updateUser=(updata)=>{
     return  updateProfile(auth.currentUser,updata)

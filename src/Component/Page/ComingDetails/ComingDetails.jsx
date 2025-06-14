@@ -12,7 +12,7 @@ const ComingDetails = () => {
 
 
     const handlerJoin=()=>{
-    axios.post("http://localhost:3000/event-join-user",{...newData ,email:user?.email}).then((result) => {
+    axios.post("https://brash-celery-production.up.railway.app/event-join-user",{...newData ,email:user?.email}).then((result) => {
        console.log(result.data);   
 Swal.fire({
   title: "Success",

@@ -7,10 +7,11 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../../Context/AuthContext';
 import { setHours, setMinutes } from 'date-fns';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 
 import Swal from 'sweetalert2';
 const ManageEventUpdate = () => {
+  const navigate=useNavigate()
      const {user}=use(AuthContext)
      const manage=useLoaderData()
   
@@ -31,9 +32,10 @@ const ManageEventUpdate = () => {
     return toast.error("All fields must be filled");
 
 }
-axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
+axios.put(`https://brash-celery-production.up.railway.app/event-update/${manageDate._id}`,
   {...data, date:selectedDateTime, email:user?.email})
 .then((result) => {
+  navigate("/comingEvent")
   console.log(result.data);
 
   Swal.fire({
@@ -83,7 +85,7 @@ axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
   <legend className="fieldset-legend">  Event Type </legend>
   <select  name="eventType"className="select">
     <option   defaultValue={manageDate.eventType}>Select an event type</option>
-    <option value="cleanup"> Cleanup</option>
+
     <option defaultValue={manageDate.eventType}> Cleanup</option>
     <option value="Plantation">Plantation</option>
     <option value="Donation">Donation</option>
