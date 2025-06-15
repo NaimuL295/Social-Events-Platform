@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-
+  import { ToastContainer, toast } from 'react-toastify';
 const Login = () => {
 const navigate=useNavigate()
 const {userLogin,googleSign}=use(AuthContext)
@@ -13,6 +13,29 @@ const handlerLogin=(e)=>{
   const from=e.target;
   const fromData=new FormData(from);
   const {email,password }=Object.fromEntries(fromData.entries())
+
+if (!email) {
+    toast.error("Enter You Email")
+    return
+} if (password.length < 6) {
+      toast.error(" Length must be at least 6 characters");
+      return;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      toast.error(" Must have an Uppercase letter in the password");
+      return;
+    }
+
+    if (!/[a-z]/.test(password)) {
+      toast.error("Must have a Lowercase letter in the password");
+      return;
+
+    }
+
+
+
+
 console.log(email,password);
 userLogin(email,password).then((result) => {
   console.log(result);
@@ -50,13 +73,14 @@ userLogin(email,password).then((result) => {
         <button className="absolute  right-2 bottom-4" type="button"  onClick={()=>setTrue(!isTrue) }>  {isTrue? <FaEye  size={20}/>:<FaEyeSlash size={20} />  }      </button>
         </div>
           <div><a className="link link-hover">Forgot password?</a></div>
-          
+          <ToastContainer></ToastContainer>
         </fieldset>
-        <button  type='submit '  className="btn   text-center">Log in</button>
+        <button  type='submit '  className="btn  bg-green-600 text-white  text-center">Log in</button>
     </form>
     <p className="px-6 text-sm text-center dark:text-gray-600">Don't have an account yet?
 			<Link to='/register'> Register </Link>
 			</p>
+
       <div>
     
       <div className='py-4 w-8/12 mx-auto'> 

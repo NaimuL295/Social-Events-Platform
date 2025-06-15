@@ -22,23 +22,14 @@ const CreateEvent = () => {
   const from=e.target;
   const fromData=new FormData(from);
   const data=Object.fromEntries(fromData.entries())
-// title,
-// description,
-// events,thumbnail,location
-  
-
 //console.log(title, description ,events,location, selectedDate);
-// title,description,events,thumbnail,location ,date:startDate
-
-console.log();
-
 
 
   if (!data.title || !data.description || !data.eventType || !data.thumbnail || !data.location) {
     return toast.error("All fields must be filled");
 
 }
-axios.post("https://brash-celery-production.up.railway.app/event",
+axios.post("https://social-event-server-side.vercel.app/event",
   {...data, date:selectedDateTime, email:user?.email})
 .then((result) => {
   console.log(result.data);

@@ -5,13 +5,16 @@ import axios from 'axios';
 import React, { use } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 
+
 const axiosInstance = axios.create({
-  baseURL:"https://brash-celery-production.up.railway.app",
+//baseURL:"http://localhost:3000",
+  baseURL:"https://social-event-server-side.vercel.app",
  withCredentials:true
 });
 
-const useAxiosSecure = () => {
-const {logout}=use(AuthContext)
+
+const useAxiosSecure= () => {
+const { logout}=use(AuthContext)
 
  axiosInstance.interceptors.response.use(
     (response) => response, // Success: pass through
@@ -20,7 +23,7 @@ const {logout}=use(AuthContext)
 
       if (status === 401 || status === 403) {
         // Logout without async/await
-      logout()
+       logout()
           .then(() => console.log('User logged out (401/403)'))
           .catch((err) => console.error('Logout failed:', err));
       }
@@ -33,4 +36,5 @@ const {logout}=use(AuthContext)
 };
 
 export default useAxiosSecure;
+
 

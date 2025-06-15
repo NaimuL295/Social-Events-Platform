@@ -12,7 +12,7 @@ const ComingDetails = () => {
 
 
     const handlerJoin=()=>{
-    axios.post("https://brash-celery-production.up.railway.app/event-join-user",{...newData ,email:user?.email}).then((result) => {
+    axios.post("https://social-event-server-side.vercel.app/event-join-user",{...newData ,email:user?.email}).then((result) => {
        console.log(result.data);   
 Swal.fire({
   title: "Success",
@@ -46,7 +46,7 @@ Swal.fire({
       <div className="mt-4">
         <button
      onClick={handlerJoin}
-          className="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-xl hover:bg-blue-700 transition-colors"
+          className="w-full bg-green-600 text-white font-medium py-2 px-4 rounded-xl  transition-colors"
         >
        Join event
         </button>

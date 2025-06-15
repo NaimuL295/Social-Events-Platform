@@ -4,6 +4,7 @@ import React, { use, useEffect, useState } from 'react';
 import ManageCard from '../../Share/ManageCard';
 import useAxiosSecure from '../../Hook/useAxiosSecure';
 import { AuthContext } from '../../Context/AuthContext';
+import Spinner from '../../Share/Spinner';
 
 
 
@@ -27,7 +28,9 @@ const axiosSecure=useAxiosSecure()
             
         })
     },[user,axiosSecure])
-
+if (!mangoUser || mangoUser.length === 0) {
+  return <Spinner />;
+}
 
    return (
         <>

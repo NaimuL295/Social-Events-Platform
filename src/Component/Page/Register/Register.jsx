@@ -95,7 +95,7 @@ const handlerGoogle=()=>{
             
                 <button className="absolute  right-2 bottom-4" type="button"  onClick={()=>setTrue(!isTrue) }>  {isTrue? <FaEye  size={20}/>:<FaEyeSlash size={20} />  }      </button>
                 </div>
-          <button  type='submit '  className="btn   text-center">Register</button>
+          <button  type='submit '  className="btn  bg-green-600 text-white text-center">Register</button>
 
         </fieldset>  </form>
       <p className=" text-center  py-1">You have Already account 

@@ -33,10 +33,10 @@ useEffect(() => {
 
     if (currentUser?.email) {
      
-      axios.post("https://brash-celery-production.up.railway.app/jwt",
+      axios.post("https://social-event-server-side.vercel.app/jwt",
         { email: currentUser?.email },
-        { withCredentials: true }
-      ).then((result) => {
+        { withCredentials: true }).
+        then((result) => {
         console.log("JWT SET:", result.data);
       }).catch((err) => {
         console.error("JWT ERROR:", err);

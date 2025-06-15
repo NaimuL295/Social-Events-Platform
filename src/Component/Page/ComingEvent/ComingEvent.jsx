@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import EventCard from '../../Share/EventCard/EventCard';
+import Spinner from '../../Share/Spinner';
 
 const ComingEvent = () => {
 const [eventData,setEvent]=useState([])
 const [search,setSearch]=useState("")
 
      useEffect(()=>{
-axios.get(`https://brash-celery-production.up.railway.app/event-search?searchparams=${search}`).
+axios.get(`https://social-event-server-side.vercel.app/event-search?searchparams=${search}`).
 
 then((result) => {
    setEvent(result.data )
@@ -17,7 +18,10 @@ then((result) => {
     
 });
  },[search])
- console.log(eventData);
+
+if (!eventData || eventData.length === 0) {
+  return <Spinner />;
+}
  
     return (
     <> 
