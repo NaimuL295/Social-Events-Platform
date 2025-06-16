@@ -8,7 +8,7 @@ const [eventData,setEvent]=useState([])
 const [search,setSearch]=useState("")
 
      useEffect(()=>{
-axios.get(`http://localhost:3000/event-search?searchparams=${search}`).
+axios.get(`https://social-event-server-side.vercel.app/event-search?searchparams=${search}`).
 
 then((result) => {
    setEvent(result.data )

@@ -32,7 +32,7 @@ const ManageEventUpdate = () => {
     return toast.error("All fields must be filled");
 
 }
-axios.put(`http://localhost:3000/event-update/${manageDate._id}`,
+axios.put(`https://social-event-server-side.vercel.app/event-update/${manageDate._id}`,
   {...data, date:selectedDateTime, email:user?.email})
 .then((result) => {
   navigate("/comingEvent")

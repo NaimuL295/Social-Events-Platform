@@ -111,7 +111,7 @@ const handleLogout = () => {
               <li ><NavLink className="text-base"  to="/manageEvent">Manage Events</NavLink></li>
               <li><NavLink   className="text-base"  to="/joinEvent">Joined Events</NavLink></li>
               <li>
-                <button className="btn text-base"  onClick={handleLogout} >
+                <button className="btn text-base bg-green-600 text-white"  onClick={handleLogout} >
                   Logout
                 </button>
               </li>

@@ -33,7 +33,7 @@ useEffect(() => {
 
     if (currentUser?.email) {
      
-      axios.post("http://localhost:3000/jwt",
+      axios.post("https://social-event-server-side.vercel.app/jwt",
         { email: currentUser?.email },
         { withCredentials: true }).
         then((result) => {

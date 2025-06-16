@@ -22,7 +22,7 @@ const ManageCard = ({manage}) => {
 //   confirmButtonText: "Yes, delete it!"
 // }).then((result) => {
 //   if (result.isConfirmed) {
-//   axios.delete(`http://localhost:3000//event-delete/${id}`).then((result) => {
+//   axios.delete(`https://social-event-server-side.vercel.app//event-delete/${id}`).then((result) => {
 //           console.log(result.data);
 
 // //     const remaining=mangoUser.filter(us=>us._id!==id);

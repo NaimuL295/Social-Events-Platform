@@ -29,7 +29,9 @@ setJoin(upcomingEvents);
     },[user,axiosSecure])
 console.log(join);
 
-
+if (!join || join.length === 0) {
+  return <Spinner />;
+}
     return (
         <div className='w-11/12  grid lg:grid-cols-3 md:grid-cols-2 gap-5 mx-auto  my-4'>
             {join.map(join=>
