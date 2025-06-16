@@ -26,14 +26,16 @@ const handleLogout = () => {
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
         <li> 
           <ul className="p-2">
-            <NavLink to="/" className="text-base font-bold ">
+            {/* <NavLink to="/" className="text-base font-bold ">
           Social Events
-        </NavLink>
-
+        </NavLink> */}
+ 
        <li> <NavLink to="/comingEvent" className="  btn  text-base">
-          Upcoming Events
+          Upcoming Eventss
         </NavLink></li>
-        
+       <li className="p-2"> <NavLink to="/about" className=" text-base font-bold ">
+       About
+        </NavLink></li>
           </ul>
         </li>
       

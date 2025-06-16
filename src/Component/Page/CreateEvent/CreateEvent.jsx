@@ -131,20 +131,20 @@ navigate("/comingEvent")
 
         {/* Thumbnail Image URL */}
         <div>
-          <label htmlFor="thumbnail" className="block  font-medium text-gray-700 mb-1">
+          <label htmlFor="thumbnail" className="block  font-medium  mb-1">
             Thumbnail Image URL
           </label>
           <input  name='thumbnail' type="url"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md"
+          className="w-full px-3 py-2 border  rounded-md"
             placeholder="https://example.com/image.jpg"
          required />
-          <p className="mt-1 text-xs text-gray-500">
+          <p className="mt-1 text-xs ">
             Provide a direct link to your event image   </p>
         </div>
 
         {/* Location */}
         <div>
-          <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="location" className="block text-sm font-medium  mb-1">
             Location *
           </label>
           <input type="text"   name='location'  className='w-full px-3 py-2 border rounded-md'
@@ -154,7 +154,7 @@ navigate("/comingEvent")
         </div>
 
       
-        <div className=" btn">
+        <div className=" btn  bg-green-600 text-white">
           <ToastContainer></ToastContainer>
           <button
             type="submit"> Submitting  </button>
