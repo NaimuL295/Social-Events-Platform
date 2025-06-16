@@ -29,7 +29,7 @@ const CreateEvent = () => {
     return toast.error("All fields must be filled");
 
 }
-axios.post("https://social-event-server-side.vercel.app/event",
+axios.post("http://localhost:3000/event",
   {...data, date:selectedDateTime, email:user?.email})
 .then((result) => {
   console.log(result.data);
@@ -40,7 +40,6 @@ Swal.fire({
   icon: "success",
   draggable: true
 });
-
   setTimeout(()=>{
 navigate("/comingEvent")
   },1000)

@@ -12,7 +12,7 @@ const ComingDetails = () => {
 
 
     const handlerJoin=()=>{
-    axios.post("https://social-event-server-side.vercel.app/event-join-user",{...newData ,email:user?.email}).then((result) => {
+    axios.post("http://localhost:3000/event-join-user",{...newData ,email:user?.email}).then((result) => {
        console.log(result.data);   
 Swal.fire({
   title: "Success",
