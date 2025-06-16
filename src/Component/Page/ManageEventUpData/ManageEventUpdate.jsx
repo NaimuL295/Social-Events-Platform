@@ -79,6 +79,9 @@ axios.put(`https://social-event-server-side.vercel.app/event-update/${manageDate
           />
          
         </div>
+
+        {/* two */}
+        <div className='lg:flex items-center gap-12'>
         {/* Event Type */}
         <div>
 <fieldset className="fieldset">
@@ -98,48 +101,10 @@ axios.put(`https://social-event-server-side.vercel.app/event-update/${manageDate
     <option value="volunteering">Volunteering</option>
   </select>
 </fieldset>
-
-
         </div>
-
-        {/* Thumbnail Image URL */}
+    {/* Event Date */}
         <div>
-          <label htmlFor="thumbnail" className="block  font-medium text-gray-700 mb-1">
-            Thumbnail Image URL
-          </label>
-          <input
-          defaultValue={manageDate.thumbnail}
-          name='thumbnail'
-            id="thumbnail"
-            type="url"
-          
-            className="w-full px-3 py-2 border border-gray-300 rounded-md"
-            placeholder="https://example.com/image.jpg"
-         required  />
-          <p className="mt-1 text-xs text-gray-500">
-            Provide a direct link to your event image (optional)
-          </p>
-        </div>
-
-        {/* Location */}
-        <div>
-          <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-1">
-            Location *
-          </label>
-          <input
-            id="location"
-            type="text"
-            defaultValue={manageDate.location}
-         name='location'
-            className='w-full px-3 py-2 border rounded-md'
-         placeholder="Enter Your   Location "
-          required   />
-         
-        </div>
-
-        {/* Event Date */}
-        <div>
-          <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="date" className="block text-sm font-medium  mb-1">
             Event Date & Time *
             
           </label>
@@ -159,9 +124,47 @@ axios.put(`https://social-event-server-side.vercel.app/event-update/${manageDate
    
 
         </div>
-        <div className=" btn">
+
+</div>
+        {/* Thumbnail Image URL */}
+        <div>
+          <label htmlFor="thumbnail" className="block  font-medium  mb-1">
+            Thumbnail Image URL
+          </label>
+          <input
+          defaultValue={manageDate.thumbnail}
+          name='thumbnail'
+            id="thumbnail"
+            type="url"
+          
+            className="w-full px-3 py-2 border  rounded-md"
+            placeholder="https://example.com/image.jpg"
+         required  />
+          <p className="mt-1 text-xs ">
+            Provide a direct link to your event image (optional)
+          </p>
+        </div>
+
+        {/* Location */}
+        <div>
+          <label htmlFor="location" className="block text-sm font-medium ">
+            Location *
+          </label>
+          <input
+            id="location"
+            type="text"
+            defaultValue={manageDate.location}
+         name='location'
+            className='w-full px-3 py-2 border rounded-md'
+         placeholder="Enter Your   Location "
+          required   />
+         
+        </div>
+
+    
+        <div className=" btn ">
         <ToastContainer></ToastContainer>
-          <button
+          <button className=''
             type="submit"> Submitting  </button>
         </div>
       </form>

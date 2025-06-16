@@ -77,9 +77,9 @@ userLogin(email,password).then((result) => {
         </fieldset>
         <button  type='submit '  className="btn  bg-green-600 text-white  text-center">Log in</button>
     </form>
-    <p className="px-6 text-sm text-center dark:text-gray-600">Don't have an account yet?
-			<Link to='/register'> Register </Link>
-			</p>
+ 	<Link to='/register'>   <p className="px-6 text-sm text-center dark:text-gray-600">Don't have an account?
+		 <span className='text-amber-400'> Register	</span>  </p> </Link>
+		
 
       <div>
     

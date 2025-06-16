@@ -5,7 +5,7 @@ import Footer from '../Share/Footer';
 
 const RootLayout = () => {
       const {pathname} = useLocation();
-        const staticPaths = ['/', '/login', '/register', '/comingEvent', '/joinEvent', '/manageEvent'   ,'/createEvent'];
+        const staticPaths = ['/', '/login', '/register', '/comingEvent', '/joinEvent', '/manageEvent', "/about",  '/createEvent'];
 const hideNavbar = 
   staticPaths.includes(pathname) ||
   pathname.startsWith('/details/') ||

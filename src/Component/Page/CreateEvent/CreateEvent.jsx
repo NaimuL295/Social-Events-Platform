@@ -84,6 +84,9 @@ navigate("/comingEvent")
         </div>
 
         {/* Event Type */}
+
+{/* two */}
+        <div className='lg:flex items-center gap-12'>
         <div>
 <fieldset className="fieldset">
   <legend className="fieldset-legend">  Event Type</legend>
@@ -102,8 +105,29 @@ navigate("/comingEvent")
   </select>
 </fieldset>
 
+        </div>
+{/* one */}
+  {/* Event Date */}
+        <div >
+          <label htmlFor="date" className="block text-sm font-medium  mb-1">
+            Event Date & Time * </label>
+  <DatePicker 
+      selected={selectedDateTime}
+      onChange={(date) => setSelectedDateTime(date)}
+      showTimeSelect
+      Time={setHours(setMinutes(new Date(), 0), 17)}
+     // Time={setHours(setMinutes(new Date(), 30), 20)}
+      dateFormat="MMMM d, yyyy h:mm aa"
+    
+   //
+     required  placeholderText="Select Event date"
+    />
+   
+  
 
         </div>
+
+</div>
 
         {/* Thumbnail Image URL */}
         <div>
@@ -129,26 +153,7 @@ navigate("/comingEvent")
          
         </div>
 
-        {/* Event Date */}
-        <div>
-          <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">
-            Event Date & Time * </label>
-
-     <DatePicker
-
-      selected={selectedDateTime}
-      onChange={(date) => setSelectedDateTime(date)}
-      showTimeSelect
-      Time={setHours(setMinutes(new Date(), 0), 17)}
-     // Time={setHours(setMinutes(new Date(), 30), 20)}
-      dateFormat="MMMM d, yyyy h:mm aa"
-    
-   //
-     required  placeholderText="Select Event date"
-    />
-  
-
-        </div>
+      
         <div className=" btn">
           <ToastContainer></ToastContainer>
           <button

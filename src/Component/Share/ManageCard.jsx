@@ -1,51 +1,16 @@
 
 
+import { format } from 'date-fns';
 import { IoLocationOutline } from 'react-icons/io5';
 import { MdOutlineDateRange } from 'react-icons/md';
 import { Link } from 'react-router';
 
-// import Swal from 'sweetalert2';
-// import axios from 'axios';
-
-const ManageCard = ({manage}) => {
-    console.log(manage);
-  
-//     const handleDelete=(id)=>{
-
-// Swal.fire({
-//   title: "Are you sure?",
-//   text: "You won't be able to revert this!",
-//   icon: "warning",
-//   showCancelButton: true,
-//   confirmButtonColor: "#3085d6",
-//   cancelButtonColor: "#d33",
-//   confirmButtonText: "Yes, delete it!"
-// }).then((result) => {
-//   if (result.isConfirmed) {
-//   axios.delete(`https://social-event-server-side.vercel.app//event-delete/${id}`).then((result) => {
-//           console.log(result.data);
-
-// //     const remaining=mangoUser.filter(us=>us._id!==id);
-// //  setMango(remaining)
-
-//   Swal.fire({
-//       title: "Deleted!",
-//       text: "Your file has been deleted.",
-//       icon: "success"
-//     });
-
-//         }).catch((err) => {
-//           console.log(err);
-          
-//         });
-
-  
-//   }
-// });
 
 
+const ManageCard = ({manage,handleDelete}) => {
+
+  const Dates = format(new Date(manage?.date), "MMM dd, yyyy 'at' h:mm a");
    
-//      }
     return(
       <>     
 <div className="card w-80 bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
@@ -69,21 +34,21 @@ const ManageCard = ({manage}) => {
 
     <div className="flex items-center mt-2">
       <MdOutlineDateRange />
-      <span className="ml-2 text-base">{manage?.date}</span>
+      <span className="ml-2 text-base">{Dates}</span>
     </div>
 <div>
   <p>  {manage?.description}</p></div>
     <div className="card-actions justify-end mt-4 space-x-2">
       <Link to={`/update/${manage._id}`}>
-        <button className="btn">Update</button>
+        <button className="btn  bg-green-600 text-white">Update</button>
       </Link>
       <div>
-        {/* <button 
+        <button 
         onClick={() => handleDelete(manage._id)} 
-        className="btn "
+        className="btn bg-red-500 text-white "
       >
         Delete
-      </button>  */}
+      </button> 
       </div>
     </div>
   </div>

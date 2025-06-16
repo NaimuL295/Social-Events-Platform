@@ -33,9 +33,10 @@ const handleLogout = () => {
        <li> <NavLink to="/comingEvent" className="  btn  text-base">
           Upcoming Events
         </NavLink></li>
+        
           </ul>
         </li>
-       
+      
       </ul>
     </div>
 
@@ -59,6 +60,9 @@ const handleLogout = () => {
         </NavLink>
  <NavLink to="/comingEvent" className="max-sm:hidden  btn btn-ghost text-base">
           Upcoming Events
+        </NavLink>
+ <NavLink to="/about" className="max-sm:hidden  btn btn-ghost text-base">
+       About
         </NavLink>
 
       <label className="swap swap-rotate">

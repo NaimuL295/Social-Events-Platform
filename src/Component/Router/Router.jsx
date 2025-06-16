@@ -18,6 +18,7 @@ import JoinEvent from "../Page/JoinEvent/JoinEvent";
 import ManageEvent from "../Page/ManageEvent/ManageEvent";
 import Spinner from "../Share/Spinner";
 import ManageEventUpdate from "../Page/ManageEventUpData/ManageEventUpdate";
+import About from "../Page/About/About";
 
 export  const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ export  const router = createBrowserRouter([
       {path:"login",Component:Login},
       {path:"register",Component:Register},
       {path:"comingEvent",Component:ComingEvent},
+      {path:"about",Component:About},
       {path:"createEvent",
         element:<Protect> <CreateEvent></CreateEvent></Protect>  },
         {path:"/details/:id",
