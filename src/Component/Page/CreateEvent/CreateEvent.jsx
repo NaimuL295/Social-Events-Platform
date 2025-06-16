@@ -89,9 +89,9 @@ navigate("/comingEvent")
         <div className='lg:flex items-center gap-12'>
         <div>
 <fieldset className="fieldset">
-  <legend className="fieldset-legend">  Event Type</legend>
-  <select  name="eventType"className="select">
-     <option>Select event type</option>
+  <legend className="fieldset-legend"> Select event type</legend>
+  <select disabled={false} name="eventType"className="select">
+   
     <option value="cleanup"> Cleanup</option>
     <option value="Plantation">Plantation</option>
     <option value="Donation">Donation</option>

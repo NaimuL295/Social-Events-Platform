@@ -85,8 +85,8 @@ axios.put(`https://social-event-server-side.vercel.app/event-update/${manageDate
         {/* Event Type */}
         <div>
 <fieldset className="fieldset">
-  <legend className="fieldset-legend">  Event Type </legend>
-  <select  name="eventType"className="select">
+ <legend className="fieldset-legend"> Select event type</legend>
+  <select disabled={false} name="eventType"className="select">
     <option   defaultValue={manageDate.eventType}>Select an event type</option>
 
     <option defaultValue={manageDate.eventType}> Cleanup</option>
