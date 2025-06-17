@@ -19,8 +19,12 @@ then((result) => {
 });
  },[search])
 
-if (!eventData || eventData.length === 0) {
+if (!eventData ) {
   return <Spinner />;
+}if ( eventData.length === 0) {
+  return(
+    <div className='text-center mt-5'> <h1>no event found</h1></div>
+  )
 }
  
     return (
@@ -46,13 +50,13 @@ if (!eventData || eventData.length === 0) {
     type="search"
     name='search'
     
-    className="input-xl text-base text-black"
+    className="input-xl text-base "
     onChange={(e) => setSearch(e.target.value)}
     required
     placeholder="Search"
   />
 
-</label>  <button className='btn bg-green-500' type='submit'>Submit</button >    </div></div> 
+</label>      </div></div> 
          <div className='grid lg:grid-cols-3 md:grid-cols-2 mx-auto w-10/12 gap-6'>  
         {eventData.map(eventsData=>
            <EventCard key={eventsData._id} eventsData={eventsData}></EventCard>

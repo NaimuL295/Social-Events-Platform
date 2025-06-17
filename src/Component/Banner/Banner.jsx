@@ -34,7 +34,7 @@ const Banner = () => {
        growing movement of changemakers creating greener, kinder, and more inclusive communities.
       </p>
       <p>  </p>
-      <button className="btn bg-green-500 border-none">Explore Events</button>
+      <button className="btn bg-green-500  text-white  border-none">Explore Events</button>
     </motion.div>
   </div>
 </motion.div>

@@ -11,7 +11,7 @@ const NewsLetter = () => {
           Get notified about upcoming events and volunteer opportunities in your area.
         </p>
 
-        <button className="btn bg-green-500 px-6 text-base" >
+        <button className="btn bg-green-500   text-white px-6 text-base" >
           Subscribe
         </button>
 
