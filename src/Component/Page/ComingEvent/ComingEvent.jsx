@@ -7,8 +7,15 @@ const ComingEvent = () => {
 const [eventData,setEvent]=useState([])
 const [search,setSearch]=useState("")
 
+const handleChange = (e) => {
+  setSearch(e.target.value);
+};
+
+
+
      useEffect(()=>{
-axios.get(`https://social-event-server-side.vercel.app/event-search?searchparams=${search}`).
+      const query = search === "All" ? "" : search;
+axios.get(`https://social-event-server-side.vercel.app/event-search?searchparams=${query}`).
 
 then((result) => {
    setEvent(result.data )
@@ -21,16 +28,35 @@ then((result) => {
 
 if (!eventData ) {
   return <Spinner />;
-}if ( eventData.length === 0) {
-  return(
-    <div className='text-center mt-5'> <h1>no event found</h1></div>
-  )
 }
- 
+
     return (
     <> 
         <div className='w-9/12 mx-auto my-3.5'>
           <div className='my-5 space-x-1 flex'>
+
+
+      <select 
+    value={search}
+          onChange={handleChange}
+    className="border px-4 py-2 rounded"
+  >
+    <option value="All">All</option>
+    <option value="cleanup">Cleanup</option>
+    <option value="Plantation">Plantation</option>
+    <option value="Donation">Donation</option>
+    <option value="workshop">Workshop</option>
+    <option value="seminar">Seminar</option>
+    <option value="awareness">Awareness Campaign</option>
+    <option value="fundraiser">Fundraiser</option>
+    <option value="webinar">Webinar</option>
+    <option value="training">Training Session</option>
+    <option value="volunteering">Volunteering</option>
+  </select>
+
+
+
+  
 <label className="input">
   <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
@@ -56,14 +82,26 @@ if (!eventData ) {
     placeholder="Search"
   />
 
-</label>      </div></div> 
-         <div className='grid lg:grid-cols-3 md:grid-cols-2 mx-auto w-10/12 gap-6'>  
+</label>    
+   </div></div> 
+     
+
+     {eventData.length === 0 ? (
+          <div className="text-center mt-5">
+            <h1>No event found</h1>
+          </div>
+        ) : (
+           <div className='grid lg:grid-cols-3 md:grid-cols-2 mx-auto w-10/12 gap-6'>  
         {eventData.map(eventsData=>
            <EventCard key={eventsData._id} eventsData={eventsData}></EventCard>
         )}
 
              
         </div>
+        )} 
+     
+     
+      
          </>      
     );
 };

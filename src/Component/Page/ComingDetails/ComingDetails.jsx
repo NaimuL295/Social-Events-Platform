@@ -7,7 +7,7 @@ import { FaArrowLeft } from "react-icons/fa";
 
    import { format } from 'date-fns';
 const ComingDetails = () => {
-
+ 
     const {user}=use(AuthContext)
     const data=useLoaderData()
     const newData=data?.data
@@ -17,11 +17,18 @@ const Dates = format(new Date(newData?.date), "MMM dd, yyyy 'at' h:mm a");
     const handlerJoin=()=>{
     axios.post("https://social-event-server-side.vercel.app/event-join-user",
       {...newData ,email:user?.email}).then((result) => {
-       console.log(result.data);   
+        setTimeout(()=>{
+ navigate("/joinEvent") 
+      },1000) 
+       console.log(result.data); 
+      
 Swal.fire({
   title: "Success",
   icon: "success",
   draggable: true
+ 
+
+
 });
     }).catch((err) => {
     
@@ -55,7 +62,7 @@ Swal.fire({
 
 
   <div className="mt-2"> 
-        <button
+        <button 
      onClick={handlerJoin}
           className=" bg-green-600 text-white font-medium py-2 px-4 rounded-xl  transition-colors"
         >
