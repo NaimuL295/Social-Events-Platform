@@ -15,7 +15,7 @@ const handleLogout = () => {
     }
   };
   return (
-    <div className="navbar bg-base-100 shadow-md px-8 py-6  mx-auto">
+    <div className="   navbar bg-base-100 shadow-md px-8 py-4  mx-auto  ">
 
     <div className="   min-lg:hidden  md:hidden    dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -44,8 +44,8 @@ const handleLogout = () => {
 
      <div className="flex-1 flex items-center  ">
    
-   <img  className="max-sm:hidden  w-[60px] h-[45px] "src={icon} alt="" ></img>
-
+ <Link to="/">  <img  className="max-sm:hidden  w-[60px] h-[45px] "src={icon} alt="ServeSync"></img>
+</Link> 
       <h2 className=" max-sm:hidden  text-xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
                ServeSync
               </h2>
@@ -90,10 +90,10 @@ const handleLogout = () => {
         {!user ? <>
 <ul className="flex gap-2">
  
-         <li>   <Link to="/login" className="btn bg-green-600 text-white">
+         <li>   <Link to="/login" className=" btn    max-sm:btn-sm bg-green-600 text-white">
             Login
       </Link> </li> 
-<li>  <Link to="/register" className="btn  bg-green-600 text-white">
+<li>  <Link to="/register" className="btn max-sm:btn-sm   bg-green-600 text-white">
            Register
           </Link> </li>
 </ul>
@@ -116,8 +116,10 @@ const handleLogout = () => {
               <li  ><NavLink className="text-base"  to="/createEvent">Create Event</NavLink></li>
               <li ><NavLink className="text-base"  to="/manageEvent">Manage Events</NavLink></li>
               <li><NavLink   className="text-base"  to="/joinEvent">Joined Events</NavLink></li>
+              <li><NavLink   className="text-base"  to="/profile">Profile</NavLink></li>
+
               <li>
-                <button className="btn text-base bg-green-600 text-white"  onClick={handleLogout} >
+                <button className="btn lg:text-base bg-green-600 text-white"  onClick={handleLogout} >
                   Logout
                 </button>
               </li>

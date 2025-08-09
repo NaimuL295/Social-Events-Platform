@@ -162,7 +162,7 @@ axios.put(`https://social-event-server-side.vercel.app/event-update/${manageDate
         </div>
 
     
-        <div className=" btn ">
+        <div className="btn  bg-green-600 text-white">
         <ToastContainer></ToastContainer>
           <button className=''
             type="submit"> Submitting  </button>

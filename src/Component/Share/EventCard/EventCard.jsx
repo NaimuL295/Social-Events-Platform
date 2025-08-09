@@ -31,7 +31,7 @@ const EventCard = ({eventsData}) => {
        
         <div className="card-actions justify-end mt-1">
         <Link to={`/details/${eventsData._id}`}>   <button className="btn bg-green-500 text-white">
-       View event
+     See more
           </button>  </Link>
         </div>
       </div>

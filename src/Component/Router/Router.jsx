@@ -19,6 +19,7 @@ import ManageEvent from "../Page/ManageEvent/ManageEvent";
 import Spinner from "../Share/Spinner";
 import ManageEventUpdate from "../Page/ManageEventUpData/ManageEventUpdate";
 import About from "../Page/About/About";
+import Profile from "../Page/Profile/Profile";
 
 export  const router = createBrowserRouter([
   {
@@ -31,7 +32,9 @@ export  const router = createBrowserRouter([
       {path:"comingEvent",Component:ComingEvent},
       {path:"about",Component:About},
       {path:"createEvent",
+        
         element:<Protect> <CreateEvent></CreateEvent></Protect>  },
+        {path:"profile",element:<Protect><Profile></Profile></Protect>},
         {path:"/details/:id",
           loader:({params})=>axios.get(`https://social-event-server-side.vercel.app/event-one/${params.id}`),
           element:<Protect>  <ComingDetails></ComingDetails>  </Protect>,

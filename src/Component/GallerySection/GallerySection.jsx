@@ -6,7 +6,7 @@ import { FaCamera } from "react-icons/fa";
 const GallerySection=() => {
   return (
     <section className="py-4 bg-base-100 px-4">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-10  flex justify-center">
        <FaCamera/>  Event Highlights
         </h2>

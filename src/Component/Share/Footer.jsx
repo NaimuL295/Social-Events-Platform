@@ -4,9 +4,9 @@ import icon from"../../assets/icons8..png"
 const Footer = () => {
   return (
     <footer className="  pt-8 pb-5">
-      <div className="container mx-auto px-4">
+      <div className=" lg:max-w-screen-2xl   md:container mx-auto px-6">
        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-2">
           <div className="space-y-4">
             <div className="flex items-center">
            <img  className="  w-[60px] h-[45px] "src={icon} alt="" ></img>
@@ -28,11 +28,11 @@ const Footer = () => {
              <li>    <Link className=" transition-colors duration-300"  >   
                   </Link></li>
 
-<li> <Link  className=" transition-colors duration-300"
+<li> <Link to="/comingEvent" className=" transition-colors duration-300"
                   >
               Upcoming Events
                   </Link></li>
- <li> <Link  className=" transition-colors duration-300">Create Event  </Link></li> 
+ <li> <Link to="/createEvent"  className=" transition-colors duration-300">Create Event  </Link></li> 
             </ul>
           </div>
 

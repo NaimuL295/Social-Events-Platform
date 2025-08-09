@@ -8,11 +8,11 @@ const FeaturesSection = () => {
 
 
 
-    <section className="py-16  w-11/12 mx-auto">
+    <section className="max-w-7xl mx-auto text-center">
 
   <div className="text-center mx-auto px-4">
         <div 
-         
+         className='my-10'
         >
           <h2 className="text-3xl md:text-4xl font-bold  mb-4">
             Empower Your Community

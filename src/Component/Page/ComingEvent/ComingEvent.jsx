@@ -32,14 +32,14 @@ if (!eventData ) {
 
     return (
     <> 
-        <div className='w-9/12 mx-auto my-3.5'>
+        <div className="max-w-screen-2xl   md:container px-4 ">
           <div className='my-5 space-x-1 flex'>
 
 
       <select 
     value={search}
           onChange={handleChange}
-    className="border px-4 py-2 rounded"
+    className="border select-xs    py-2 rounded"
   >
     <option value="All">All</option>
     <option value="cleanup">Cleanup</option>
@@ -57,7 +57,7 @@ if (!eventData ) {
 
 
   
-<label className="input">
+<label className="input input-sm">
   <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <g
       strokeLinejoin="round"
@@ -76,7 +76,7 @@ if (!eventData ) {
     type="search"
     name='search'
     
-    className="input-xl text-base "
+  className='input  input-sm'
     onChange={(e) => setSearch(e.target.value)}
     required
     placeholder="Search"
