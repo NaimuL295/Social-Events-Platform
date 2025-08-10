@@ -13,9 +13,9 @@ const Profile = () => {
         alt="Profile"
          className="w-12 h-12 rounded-full mx-auto mb-4 object-cover"
       />
-      <h2 className="text-2xl text-black font-semibold mb-2">{user?.
+      <h2 className="text-2xl  font-semibold mb-2">{user?.
 displayName}</h2>
-      <p className="text-gray-600 mb-4">{user?.email}</p>
+      <p className=" mb-4">{user?.email}</p>
     </div>
   );
 };

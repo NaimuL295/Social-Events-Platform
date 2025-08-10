@@ -18,8 +18,7 @@ const Footer = () => {
              <Link> <FaFacebook></FaFacebook>  </Link>
               <Link> <FaTwitter></FaTwitter></Link>
               <Link> <FaInstagram></FaInstagram></Link>
-              <Link>  <FaLinkedin></FaLinkedin></Link>
-            
+              <Link>  <FaLinkedin></FaLinkedin></Link>      
             </div>
           </div>
           <div>

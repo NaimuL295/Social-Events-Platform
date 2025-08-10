@@ -3,64 +3,66 @@ import { Link, useNavigate,   } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-  import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
+import { UpLoadImg } from '../../Hook/UpLoadImg';
+
+
+
+   
 const Register = () => {
+
  const navigate=useNavigate()
 const {userCreate,googleSign,updateUser, setUser}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
-const handlerRegister=(e)=>{
+ const [preview, setPreview] = useState(null);
+
+
+
+   const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    console.log(file);
+    
+    if (!file) return;
+
+    const uploadedUrl = await UpLoadImg(file);
+    console.log("Uploaded Image URL:", uploadedUrl);
+    setPreview(updateUser)
+  };
+
+const handlerRegister= async(e)=>{
   e.preventDefault();
   const from=e.target;
   const fromData=new FormData(from);
-  const {name ,email,photo,password }=Object.fromEntries(fromData.entries())
-// console.log(name,email,photo,password);
 
-if (!email) {
-    toast.error("Enter You Email")
-    return
-} if (password.length < 6) {
-      toast.error(" Length must be at least 6 characters");
-      return;
-    }
 
-    if (!/[A-Z]/.test(password)) {
-      toast.error(" Must have an Uppercase letter in the password");
-      return;
-    }
 
-    if (!/[a-z]/.test(password)) {
-    return  toast.error("Must have a Lowercase letter in the password");
-    }
 
-userCreate(email,password).then((result) => {
+  const {name ,email,password }=Object.fromEntries(fromData.entries())
+
+  if (!email) return toast.error("Enter your Email");
+  if (password.length < 6) return toast.error("Password must be at least 6 characters");
+  if (!/[A-Z]/.test(password)) return toast.error("Must have an Uppercase letter");
+  if (!/[a-z]/.test(password)) return toast.error("Must have a Lowercase letter");
+try {
+   
+   
+    
+    const result = await userCreate(email, password);
+    const resUser = result.user;
+
   
-  // console.log(result);
-  const res=result.user
+    await updateUser({ displayName: name, photoURL: preview });
 
-  updateUser({displayName:name,photoURL:photo}).then(() => {
-     navigate("/")
-		   setUser({...res,displayName:name,photoURL:photo}).then((result) => {
-       
-        console.log(result);
-       
-       }).catch((err) => {
-        console.log(err);
-        
-       });
-}).catch((err) => {
-  console.log(err);
   
-});
+    setUser({ ...resUser, displayName: name, photoURL:  preview });
 
+    navigate("/");
+  } catch (err) {
+    console.error(err);
+    toast.error("Registration failed");
+  }
+};
 
-}).then((result) => {
-  console.log(result);
-  
-}).catch((err) => {
-  console.log(err);
-  
-});
-}
 const handlerGoogle=()=>{
    setTimeout(() => {
    googleSign()
@@ -85,15 +87,21 @@ const handlerGoogle=()=>{
 					<input   name='email'  type="text" placeholder="Email" className=" my-2  input  w-full " />
 				</div>
         <div className="col-span-full sm:col-span-3">
-					<label htmlFor="" className="text-sm">photoURL </label>
-					<input   name='photo'  type="text" placeholder="photoURL" className=" my-2  input  w-full " />
+					 <label htmlFor="photo" className="text-sm">Photo</label>
+      <input
+        id="photo"
+        name="photo"
+        type="file"
+        className="my-2 input w-full"
+        onChange={handleFileChange}
+      />
 				</div>
          <div className="col-span-full sm:col-span-3 relative">
                   <label htmlFor="" className="text-sm">Password</label>
                   <input   name='password'  type={isTrue? "text" : "password" }   placeholder="Password" className=" my-2  input  w-full " />
                 
             
-                <button className="absolute  right-2 bottom-4" type="button"  onClick={()=>setTrue(!isTrue) }>  {isTrue? <FaEye  size={20}/>:<FaEyeSlash size={20} />  }      </button>
+                <button className="absolute z-50 right-2 bottom-4" type="button"  onClick={()=>setTrue(!isTrue) }>  {isTrue? <FaEye  size={20}/>:<FaEyeSlash size={20} />  }      </button>
                 </div>
           <button  type='submit '  className="btn  bg-green-600 text-white text-center">Register</button>
 

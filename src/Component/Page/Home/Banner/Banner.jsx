@@ -1,6 +1,6 @@
 import React from 'react';
 import { color, motion } from "motion/react"
-import banner from "../../assets/banner.jpg"
+import banner from "../../../../assets/banner.jpg"
 const Banner = () => {
   
    return(

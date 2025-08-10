@@ -5,7 +5,6 @@ import {
 
 import RootLayout from "../RootLayout/RootLayout";
 import Home from "../Page/Home/Home";
-
 import Register from "../Page/Register/Register";
 import Login from "../Page/Login/Login";
 import CreateEvent from "../Page/CreateEvent/CreateEvent";
@@ -20,6 +19,7 @@ import Spinner from "../Share/Spinner";
 import ManageEventUpdate from "../Page/ManageEventUpData/ManageEventUpdate";
 import About from "../Page/About/About";
 import Profile from "../Page/Profile/Profile";
+import AuthLayout from "../RootLayout/AuthLayout";
 
 export  const router = createBrowserRouter([
   {
@@ -27,8 +27,14 @@ export  const router = createBrowserRouter([
     Component:RootLayout,
     children:[
       {index:true ,Component:Home},
-      {path:"login",Component:Login},
-      {path:"register",Component:Register},
+      {path:"auth",  Component: AuthLayout,
+
+        children:[ 
+          {path:"login",Component:Login},
+
+          {path:"register",Component:Register},
+        ]
+      },
       {path:"comingEvent",Component:ComingEvent},
       {path:"about",Component:About},
       {path:"createEvent",
@@ -40,10 +46,12 @@ export  const router = createBrowserRouter([
           element:<Protect>  <ComingDetails></ComingDetails>  </Protect>,
            hydrateFallbackElement:<Spinner></Spinner>
         },
+
         {path:"joinEvent",element:<Protect> <JoinEvent></JoinEvent> </Protect> },
         {path:"/update/:id",
          loader:({params})=>axios.get(`https://social-event-server-side.vercel.app/event-manage-one/${params.id}`),
           hydrateFallbackElement:<Spinner></Spinner>,
+
           Component:ManageEventUpdate},
         {path:"manageEvent",  element:<Protect><ManageEvent></ManageEvent></Protect>},
       {path:"/*",Component:PageError,

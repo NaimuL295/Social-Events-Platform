@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import EventCard from '../../Share/EventCard/EventCard';
+import EventCard from '../../Share/EventCard';
 import Spinner from '../../Share/Spinner';
 
 const ComingEvent = () => {

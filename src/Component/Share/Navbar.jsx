@@ -90,10 +90,10 @@ const handleLogout = () => {
         {!user ? <>
 <ul className="flex gap-2">
  
-         <li>   <Link to="/login" className=" btn    max-sm:btn-sm bg-green-600 text-white">
+         <li>   <Link to="/auth/login" className=" btn    max-sm:btn-sm bg-green-600 text-white">
             Login
       </Link> </li> 
-<li>  <Link to="/register" className="btn max-sm:btn-sm   bg-green-600 text-white">
+<li>  <Link to="/auth/register" className="btn max-sm:btn-sm   bg-green-600 text-white">
            Register
           </Link> </li>
 </ul>
