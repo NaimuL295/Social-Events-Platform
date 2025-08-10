@@ -17,31 +17,33 @@ const {userCreate,googleSign,updateUser, setUser}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
  const [preview, setPreview] = useState("");
 
-   const handleFileChange = async (e) => {
-    const file = e.target.files[0];
-   ;
-    
+const handleFileChange = async (e) => {
+  const file = e.target.files[0];
+
   if (!file) {
-  setUploadError("Please select a file.");
-  return;
-}
+    setUploadError("Please select a file.");
+    return;
+  }
 
-    const uploadedUrl = await UpLoadImg(file)
-
-    if (!updateUser) {
-      return <p>  {updateUser} </p>
+  try {
+    const uploadedUrl = await UpLoadImg(file);
+ if (!uploadedUrl) {
+      setUploadError("Image upload failed. Please try again.");
+      return;
     }
-    console.log("Uploaded Image URL:", uploadedUrl);
-    setPreview(uploadedUrl)
-  };
+    setUploadError("");
+    setPreview(uploadedUrl);
+  } catch (err) {
+    setUploadError("Something went wrong while uploading.",err);
+  }
+};
 
 const handlerRegister= async(e)=>{
   e.preventDefault();
   const from=e.target;
   const fromData=new FormData(from);
 
-
-  const {name ,email,password }=Object.fromEntries(fromData.entries())
+  const {name,email,password }=Object.fromEntries(fromData.entries())
 
   if (!email) return toast.error("Enter your Email");
   if (password.length < 6) return toast.error("Password must be at least 6 characters");
