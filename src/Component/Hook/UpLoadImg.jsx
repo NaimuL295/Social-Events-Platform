@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const UpLoadImg = async (imageFile) => {
+ const UpLoadImg = async (imageFile) => {
   try {
     const formData = new FormData();
     formData.append("image", imageFile);
@@ -10,7 +10,8 @@ export const UpLoadImg = async (imageFile) => {
     );
     return res.data.data.url;
   } catch (error) {
-    console.error("Image upload failed:", error);
-    throw error;
+    return("Image upload failed:", error);
+   
   }
 };
+ export default UpLoadImg

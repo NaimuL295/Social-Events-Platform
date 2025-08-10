@@ -32,7 +32,7 @@ if (!eventData ) {
 
     return (
     <> 
-        <div className="    max-w-screen-2xl   md:container px-8">
+        <div className="   w-9/12  px-8">
           <div className='my-5 space-x-1 flex'>
 
       <select 
@@ -81,7 +81,7 @@ if (!eventData ) {
           </div>
         ) : ( 
   
-       <div className='  max-w-screen-2xl   md:container px-4'>  
+       <div className=' w-9/12  px-8'>  
        
          <div className='grid lg:grid-cols-3 md:grid-cols-2 mx-auto w-11/12 gap-12'>  
         {eventData.map(eventsData=>

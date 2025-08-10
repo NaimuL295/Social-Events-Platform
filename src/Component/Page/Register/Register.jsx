@@ -1,32 +1,38 @@
+
 import React, { use, useState } from 'react';
 import { Link, useNavigate,   } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
-import { UpLoadImg } from '../../Hook/UpLoadImg';
+import UpLoadImg from '../../Hook/UpLoadImg';
 
 
-
-   
 const Register = () => {
+const [uploadError, setUploadError] = useState("");
+  const [firebaseError, setFirebaseError] = useState("");
 
  const navigate=useNavigate()
 const {userCreate,googleSign,updateUser, setUser}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
- const [preview, setPreview] = useState(null);
-
-
+ const [preview, setPreview] = useState("");
 
    const handleFileChange = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
+   ;
     
-    if (!file) return;
+  if (!file) {
+  setUploadError("Please select a file.");
+  return;
+}
 
-    const uploadedUrl = await UpLoadImg(file);
+    const uploadedUrl = await UpLoadImg(file)
+
+    if (!updateUser) {
+      return <p>  {updateUser} </p>
+    }
     console.log("Uploaded Image URL:", uploadedUrl);
-    setPreview(updateUser)
+    setPreview(uploadedUrl)
   };
 
 const handlerRegister= async(e)=>{
@@ -35,30 +41,43 @@ const handlerRegister= async(e)=>{
   const fromData=new FormData(from);
 
 
-
-
   const {name ,email,password }=Object.fromEntries(fromData.entries())
 
   if (!email) return toast.error("Enter your Email");
   if (password.length < 6) return toast.error("Password must be at least 6 characters");
   if (!/[A-Z]/.test(password)) return toast.error("Must have an Uppercase letter");
   if (!/[a-z]/.test(password)) return toast.error("Must have a Lowercase letter");
-try {
-   
-   
-    
+
+
+
+  try {
     const result = await userCreate(email, password);
+
     const resUser = result.user;
 
-  
-    await updateUser({ displayName: name, photoURL: preview });
+    await updateUser({
+      displayName: name,
+      photoURL: preview
+    });
 
-  
-    setUser({ ...resUser, displayName: name, photoURL:  preview });
+    setUser({
+      ...resUser,
+      displayName: name,
+      photoURL: preview
+    });
 
     navigate("/");
   } catch (err) {
-    console.error(err);
+    
+       if (err.code === "auth/email-already-in-use") {
+        setFirebaseError("This email is already in use, please try logging in or use a different email.");
+      } else if (err.code === "auth/invalid-email") {
+        setFirebaseError("The email address is invalid.");
+      } else if (err.code === "auth/weak-password") {
+        setFirebaseError("The password is too weak. Please choose a stronger password.");
+      } else {
+        setFirebaseError("An unexpected error occurred. Please try again.");
+      }
     toast.error("Registration failed");
   }
 };
@@ -79,6 +98,7 @@ const handlerGoogle=()=>{
       <h1 className="text-4xl font-bold">Register now!</h1>
         <fieldset className="fieldset">
         <div className="col-span-full sm:col-span-3">
+          <p className='text sm my-2 text-red-500 text-center '>{firebaseError}</p>
 					<label htmlFor="" className="text-sm">Name</label>
 					<input   name='name'  type="text" placeholder="Name" className=" my-2  input  w-full " />
 				</div>
@@ -95,6 +115,7 @@ const handlerGoogle=()=>{
         className="my-2 input w-full"
         onChange={handleFileChange}
       />
+      <p className='text-red-500'>{uploadError}</p>
 				</div>
          <div className="col-span-full sm:col-span-3 relative">
                   <label htmlFor="" className="text-sm">Password</label>
@@ -105,7 +126,7 @@ const handlerGoogle=()=>{
                 </div>
           <button  type='submit '  className="btn  bg-green-600 text-white text-center">Register</button>
 
-        </fieldset>  </form>
+        </fieldset> </form>
     <Link to="/login">   <p className=" text-center text-sm ">You have Already account ? <span className='text-amber-400'>	Login now</span>
 		</p> </Link>	
 		
@@ -122,6 +143,6 @@ const handlerGoogle=()=>{
         </div>   
         </div>
     );
-};
+}; 
 
-export default Register;
+export default Register

@@ -92,14 +92,14 @@ if (mangoUser.length === 0) {
 
    return (
         <>
-      
-         <div className=' max-w-screen-2xl   md:container  grid lg:grid-cols-4 md:grid-cols-2 lg:gap-8 my-4 mx-auto'>
+      <div className='w-9/12 px-8   '>
+         <div className='   grid lg:grid-cols-3 md:grid-cols-2 lg:gap-8   my-4    mx-auto'>
      {mangoUser.map(manage=>
          <ManageCard  key={manage._id} manage={manage}  handleDelete={handleDelete}  >
 
             </ManageCard>
      )}
-     </div>
+     </div></div>
         </>
     );
 };
