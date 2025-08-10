@@ -7,7 +7,7 @@ import icon from"../../assets/icons8..png"
 
 const Navbar = () => {
   const { user, logout } = use(AuthContext);
-  console.log(user?.photoURL);
+
   
 const handleLogout = () => {
     try {
