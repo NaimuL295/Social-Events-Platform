@@ -5,11 +5,12 @@ import Footer from '../Share/Footer';
 
 const RootLayout = () => {
       const {pathname} = useLocation();
-        const staticPaths = ['/', '/login', '/register', '/comingEvent', '/joinEvent', '/manageEvent', "/about", "/profile" ,'/createEvent'];
+        const staticPaths = ['/', '/login', '/register', '/comingEvent', '/joinEvent', '/manageEvent', "/about", "/profile" ,'/createEvent', "/contact"];
 const hideNavbar = 
   staticPaths.includes(pathname) ||
   pathname.startsWith('/details/') ||
   pathname.startsWith('/update/');
+
 
   return (
     <div className="flex flex-col min-h-screen">

@@ -8,12 +8,12 @@ const Footer = () => {
        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-2">
           <div className="space-y-4">
-            <div className="flex items-center">
+          <Link to="/">  <div className="flex items-center">
            <img  className="  w-[60px] h-[45px] "src={icon} alt="" ></img>
               <h2 className="text-2xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
                ServeSync
               </h2>
-            </div>
+            </div></Link>
             <div className="flex space-x-3">
              <Link> <FaFacebook></FaFacebook>  </Link>
               <Link> <FaTwitter></FaTwitter></Link>
@@ -36,7 +36,8 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-green-400">Contact Us</h3>
+          
+            <Link to="/contact">    <h3 className="text-lg font-semibold mb-4 text-green-400">Contact Us</h3>  </Link>
             <ul className="space-y-2">
               <li className="flex items-start">
               

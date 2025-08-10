@@ -87,10 +87,10 @@ navigate("/comingEvent")
 
 {/* two */}
         <div className='lg:flex items-center gap-12'>
-        <div>
+        {/* <div>
 <fieldset className="fieldset">
   <legend className="fieldset-legend"> Select event type</legend>
-  <select disabled={false} name="eventType"className="select">
+  <select required   disabled={false} name="eventType"className="select">
    
     <option value="cleanup"> Cleanup</option>
     <option value="Plantation">Plantation</option>
@@ -105,7 +105,36 @@ navigate("/comingEvent")
   </select>
 </fieldset>
 
-        </div>
+        </div> */}
+
+        
+  <div>
+    <fieldset className="fieldset">
+      <legend className="fieldset-legend">Select event type</legend>
+      <select
+        required
+        name="eventType"
+        className="select"
+        defaultValue=""
+      >
+        <option value="" disabled>
+       
+        </option>
+        <option value="cleanup">Cleanup</option>
+        <option value="plantation">Plantation</option>
+        <option value="donation">Donation</option>
+        <option value="workshop">Workshop</option>
+        <option value="seminar">Seminar</option>
+        <option value="awareness">Awareness Campaign</option>
+        <option value="fundraiser">Fundraiser</option>
+        <option value="webinar">Webinar</option>
+        <option value="training">Training Session</option>
+        <option value="volunteering">Volunteering</option>
+      </select>
+    </fieldset>
+  </div>
+
+
 {/* one */}
   {/* Event Date */}
         <div >

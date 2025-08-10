@@ -1,13 +1,16 @@
 import React, { use, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
   import { ToastContainer, toast } from 'react-toastify';
 const Login = () => {
-const navigate=useNavigate()
+const navigate=useNavigate() ;
+ const location = useLocation();
 const {userLogin,googleSign}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
+
+    const fromPathname = location.state?.from || "/";
 const handlerLogin=(e)=>{
     e.preventDefault();
   const from=e.target;
@@ -36,10 +39,9 @@ if (!email) {
 
 
 
-console.log(email,password);
 userLogin(email,password).then((result) => {
   console.log(result);
-   navigate("/")
+    navigate(fromPathname)
 }).catch((err) => {
   console.log(err);
   
@@ -51,7 +53,7 @@ userLogin(email,password).then((result) => {
   
    setTimeout(() => {
    googleSign()
-    navigate("/")
+     navigate(fromPathname)
   },1000);
 }
     return (

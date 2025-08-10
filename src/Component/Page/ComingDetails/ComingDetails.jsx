@@ -55,7 +55,7 @@ Swal.fire({
       <div className="mt-4 space-y-1  lg:px-10  lg:flex-1">
         <h2 className="text-xl font-semibold text-gray-800">{newData?.title}</h2>
      <p className="text-gray-600"><span className="font-medium">Location:</span> {newData?.location}</p> 
-         <p className="text-gray-600"><span className="font-medium">Type:</span> {newData?.event}</p> 
+         <p className="text-gray-600"><span className="font-medium">Type:</span> {newData?.eventType}</p> 
          <p className="text-gray-600"><span className="font-medium">Date:</span> {Dates}</p>
          <p className="text-gray-600">{newData?.description}</p>
 

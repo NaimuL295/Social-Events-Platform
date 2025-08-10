@@ -23,7 +23,6 @@ const Profile = () => {
       toast.error("Failed to update profile" ,err);
     }
   };
-
   return (
     <div className="max-w-sm mx-auto mt-20 p-6 rounded-lg shadow-md text-center">
       <img
@@ -31,7 +30,6 @@ const Profile = () => {
         alt="Profile"
         className="w-20 h-20 rounded-full mx-auto mb-4 object-cover"
       />
-
       <input
         type="text"
         value={newName}

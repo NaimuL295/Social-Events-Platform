@@ -46,11 +46,11 @@ const handleLogout = () => {
 
      <div className="flex-1 flex items-center  ">
    
- <Link to="/">  <img  className="max-sm:hidden  w-[60px] h-[45px] "src={icon} alt="ServeSync"></img>
-</Link> 
+ <Link to="/" className="flex items-center">  <img  className="max-sm:hidden  w-[60px] h-[45px] "src={icon} alt="ServeSync"></img>
+
       <h2 className=" max-sm:hidden  text-xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
                ServeSync
-              </h2>
+              </h2></Link> 
         {/* <NavLink   to="/" className=" max-sm:hidden  text-2xl font-bold text-primary">
           Social Events
         </NavLink> */}

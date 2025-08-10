@@ -20,6 +20,7 @@ import ManageEventUpdate from "../Page/ManageEventUpData/ManageEventUpdate";
 import About from "../Page/About/About";
 import Profile from "../Page/Profile/Profile";
 import AuthLayout from "../RootLayout/AuthLayout";
+import ContactUs from "../Share/ContactUs";
 
 export  const router = createBrowserRouter([
   {
@@ -37,8 +38,11 @@ export  const router = createBrowserRouter([
       },
       {path:"comingEvent",Component:ComingEvent},
       {path:"about",Component:About},
+      {path:"contact",Component:ContactUs},
+      
       {path:"createEvent",
         
+
         element:<Protect> <CreateEvent></CreateEvent></Protect>  },
         {path:"profile",element:<Protect><Profile></Profile></Protect>},
         {path:"/details/:id",
@@ -54,9 +58,8 @@ export  const router = createBrowserRouter([
 
           Component:ManageEventUpdate},
         {path:"manageEvent",  element:<Protect><ManageEvent></ManageEvent></Protect>},
-      {path:"/*",Component:PageError,
-      
-      }
+      {path:"/*",Component:PageError, }
+   
     ]
   },
 ]);

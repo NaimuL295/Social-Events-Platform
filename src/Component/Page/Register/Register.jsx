@@ -1,6 +1,6 @@
 
 import React, { use, useState } from 'react';
-import { Link, useNavigate,   } from 'react-router';
+import { Link, useLocation, useNavigate,   } from 'react-router';
 import { AuthContext } from '../../Context/AuthContext';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
@@ -11,7 +11,8 @@ import UpLoadImg from '../../Hook/UpLoadImg';
 const Register = () => {
 const [uploadError, setUploadError] = useState("");
   const [firebaseError, setFirebaseError] = useState("");
-
+  const location = useLocation();
+const fromPathname = location.state?.from || "/";
  const navigate=useNavigate()
 const {userCreate,googleSign,updateUser, setUser}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
@@ -68,7 +69,7 @@ const handlerRegister= async(e)=>{
       photoURL: preview
     });
 
-    navigate("/");
+    navigate(fromPathname);
   } catch (err) {
     
        if (err.code === "auth/email-already-in-use") {
@@ -87,7 +88,7 @@ const handlerRegister= async(e)=>{
 const handlerGoogle=()=>{
    setTimeout(() => {
    googleSign()
-    navigate("/")
+    navigate(fromPathname)
   },1000);
    
 }
