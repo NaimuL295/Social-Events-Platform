@@ -12,7 +12,6 @@ const handleChange = (e) => {
 };
 
 
-
      useEffect(()=>{
       const query = search === "All" ? "" : search;
 axios.get(`https://social-event-server-side.vercel.app/event-search?searchparams=${query}`).
@@ -32,7 +31,7 @@ if (!eventData ) {
 
     return (
     <> 
-        <div className="   w-9/12  px-8">
+        <div className="   lg:w-10/12  lg:px-8 w-11/12 px-4">
           <div className='my-5 space-x-1 flex'>
 
       <select 
@@ -72,16 +71,16 @@ if (!eventData ) {
 
 
 
-   </div></div> 
-     
-
-     {eventData.length === 0 ? (
+   </div>
+   
+   {/*  */}
+   
+      {eventData.length === 0 ? (
           <div className="text-center mt-5">
             <h1>No event found</h1>
           </div>
         ) : ( 
-  
-       <div className=' w-9/12  px-8'>  
+   
        
          <div className='grid lg:grid-cols-3 md:grid-cols-2 mx-auto w-11/12 gap-12'>  
         {eventData.map(eventsData=>
@@ -89,9 +88,14 @@ if (!eventData ) {
         )}
 
              
-        </div></div>
+        </div>
         )} 
      
+   
+   </div> 
+     
+
+  
      
       
          </>      
