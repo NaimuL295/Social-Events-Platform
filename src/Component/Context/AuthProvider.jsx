@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from './Auth';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, 
-    signInWithEmailAndPassword, signInWithPopup, signOut, 
+   signInWithEmailAndPassword, 
+   signInWithPopup, signOut, 
     updateProfile} from 'firebase/auth';
 import { AuthContext } from './AuthContext';
 import axios from 'axios';
@@ -16,7 +17,7 @@ const [loading,setLoading]=useState(true);
 return createUserWithEmailAndPassword(auth, email, password);
 
     }
-    const userLogin=(email,password)=>{
+    const userSign=(email,password)=>{
 return signInWithEmailAndPassword(auth, email, password)
     }
     const googleSign=()=>{
@@ -58,7 +59,7 @@ const updateUser=(updata)=>{
         user,
         setUser,
         userCreate,
-        userLogin,
+        userSign,
           googleSign,
        logout,
        loading,

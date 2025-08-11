@@ -5,9 +5,10 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
   import { ToastContainer, toast } from 'react-toastify';
 const Login = () => {
+  const [error, setError]=useState("")
 const navigate=useNavigate() ;
  const location = useLocation();
-const {userLogin,googleSign}=use(AuthContext)
+const   {userSign,googleSign}=use(AuthContext)
 const [isTrue,setTrue]=useState(false)
 
     const fromPathname = location.state?.from || "/";
@@ -21,34 +22,27 @@ if (!email) {
     toast.error("Enter You Email")
     return
 } if (password.length < 6) {
-      toast.error(" Length must be at least 6 characters");
+      toast.error("Password must be at least 6 characters long");
       return;
     }
 
-    if (!/[A-Z]/.test(password)) {
-      toast.error(" Must have an Uppercase letter in the password");
-      return;
-    }
-
-    if (!/[a-z]/.test(password)) {
-      toast.error("Must have a Lowercase letter in the password");
-      return;
-
-    }
 
 
-
-
-userLogin(email,password).then((result) => {
-  console.log(result);
-    navigate(fromPathname)
-}).catch((err) => {
-  console.log(err);
+  userSign(email,password).then(() => {
   
-});
+    
+    navigate(fromPathname)
+}) .catch((error) => {
+    if (error.code === "auth/wrong-password") {
+      setError("Incorrect password. Please try again.");
+    } else if (error.code === "auth/user-not-found") {
+      setError("No account found with this email.");
+    } else {
+      setError(error.message);
+    }
+})
+
 }
-
-
   const handlerGoogle=()=>{
   
    setTimeout(() => {
@@ -61,6 +55,7 @@ userLogin(email,password).then((result) => {
                    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto mt-6">
       <form action="" onSubmit={handlerLogin}  className="card-body" >
       <h1 className="text-5xl font-bold">Login now!</h1>
+      <p className='text-red-500 my-2'>{error}</p>
         <fieldset className="fieldset">
         <div className="col-span-full sm:col-span-3">
 					<label htmlFor="" className="text-sm">Email</label>
@@ -72,7 +67,7 @@ userLogin(email,password).then((result) => {
 					<input   name='password'  type={isTrue? "text" : "password" }   placeholder="Password" className=" my-2  input  w-full " />
 				
     
-        <button className="absolute  right-2 bottom-4" type="button"  onClick={()=>setTrue(!isTrue) }>  {isTrue? <FaEye  size={20}/>:<FaEyeSlash size={20} />  }      </button>
+        <button className="absolute  z-50 right-2 bottom-4" type="button"  onClick={()=>setTrue(!isTrue) }>  {isTrue? <FaEye  size={20}/>:<FaEyeSlash size={20} />  }      </button>
         </div>
           <div><a className="link link-hover">Forgot password?</a></div>
           <ToastContainer></ToastContainer>

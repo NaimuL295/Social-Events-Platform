@@ -59,13 +59,13 @@ const handleLogout = () => {
      
       <div className="flex gap-4  ">
        
- <NavLink to="/" className="max-sm:hidden  btn btn-ghost text-base">
+ <NavLink to="/" className="max-sm:hidden   btn   btn-ghost text-base">
           Home
         </NavLink>
- <NavLink to="/comingEvent" className="max-sm:hidden  btn btn-ghost text-base">
+ <NavLink to="/comingEvent" className="max-sm:hidden  btn   btn-ghost text-base">
           Upcoming Events
         </NavLink>
- <NavLink to="/about" className="max-sm:hidden  btn btn-ghost text-base">
+ <NavLink to="/about" className="max-sm:hidden  btn   btn-ghost text-base">
        About
         </NavLink>
 
@@ -107,7 +107,7 @@ const handleLogout = () => {
               className=" btn-circle avatar tooltip tooltip-bottom"
               data-tip={user?.displayName}
             >
-              <div className="w-10 rounded-full">
+              <div className="w-10 rounded-full border border-gray-400 ">
                 <img src={user?.photoURL} alt="Profile" />
               </div>
             </div>

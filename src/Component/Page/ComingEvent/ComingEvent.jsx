@@ -25,8 +25,8 @@ then((result) => {
 });
  },[search])
 
-if (!eventData ) {
-  return <Spinner />;
+if (!eventData) {
+return <Spinner/>  
 }
 
     return (
@@ -75,19 +75,25 @@ if (!eventData ) {
    
    {/*  */}
    
-      {eventData.length === 0 ? (
+      {eventData === null?  
           <div className="text-center mt-5">
-            <h1>No event found</h1>
-          </div>
-        ) : ( 
-   
+            {/* <h1>No event found</h1> */}
+            <div className="flex w-52 flex-col gap-4">
+  <div className="skeleton h-32 w-full"></div>
+  <div className="skeleton h-4 w-28"></div>
+  <div className="skeleton h-4 w-full"></div>
+  <div className="skeleton h-4 w-full"></div>
+</div>
+     </div>
+     :   eventData.length === 0 ? (
+  <h1 className="text-center mt-5">No event found</h1>
+) : (
        
          <div className='grid lg:grid-cols-3 md:grid-cols-2 mx-auto w-11/12 gap-12'>  
         {eventData.map(eventsData=>
            <EventCard key={eventsData._id} eventsData={eventsData}></EventCard>
         )}
-
-             
+    
         </div>
         )} 
      
