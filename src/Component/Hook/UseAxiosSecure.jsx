@@ -14,12 +14,12 @@ const useAxiosSecure= () => {
 const { logout}=use(AuthContext)
 
  axiosInstance.interceptors.response.use(
-    (response) => response, // Success: pass through
+    (response) => response, 
     (error) => {
       const status = error.response?.status;
 
       if (status === 401 || status === 403) {
-        // Logout without async/await
+      
        logout()
           .then(() => console.log('User logged out (401/403)'))
           .catch((err) => console.error('Logout failed:', err));

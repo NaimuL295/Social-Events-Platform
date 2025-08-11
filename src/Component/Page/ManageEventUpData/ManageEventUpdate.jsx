@@ -93,7 +93,7 @@ axios.put(`https://social-event-server-side.vercel.app/event-update/${manageDate
         className="select"
         defaultValue=""
       >
-        <option value="" disabled>
+        <option value="\" disabled>
        
         </option>
         <option value="cleanup">Cleanup</option>
