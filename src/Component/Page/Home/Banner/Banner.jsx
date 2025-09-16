@@ -7,7 +7,7 @@ const Banner = () => {
 <>
 <div className='   mx-auto '>  
 <motion.div
-  className="hero min-h-screen  "
+  className="hero min-h-screen  " 
  style={{ backgroundImage: `url(${banner})` }}
           transition={{
             duration: 15,

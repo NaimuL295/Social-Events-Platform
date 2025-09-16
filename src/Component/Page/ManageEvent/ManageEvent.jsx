@@ -92,14 +92,22 @@ if (mangoUser.length === 0) {
 
    return (
         <>
-      <div className='w-9/12 px-8   '>
-         <div className='   grid lg:grid-cols-3 md:grid-cols-2 lg:gap-8   my-4    mx-auto'>
-     {mangoUser.map(manage=>
-         <ManageCard  key={manage._id} manage={manage}  handleDelete={handleDelete}  >
+  <div className="w-9/12 px-8">
+  <div
+    className=" grid  gap-6  sm:grid-cols-1    md:grid-cols-2    lg:grid-cols-3    xl:grid-cols-5    my-4    mx-auto
+    "
+  >
+    {mangoUser.map((manage) => (
+      <ManageCard
+        key={manage._id}
+        manage={manage}
+        handleDelete={handleDelete}
+        className="bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-xl shadow-lg p-4 hover:shadow-2xl transition-all duration-300"
+      />
+    ))}
+  </div>
+</div>
 
-            </ManageCard>
-     )}
-     </div></div>
         </>
     );
 };

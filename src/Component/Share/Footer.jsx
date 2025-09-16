@@ -4,7 +4,7 @@ import icon from"../../assets/icons8..png"
 const Footer = () => {
   return (
     <footer className="  pt-8 pb-5">
-      <div className=" lg:max-w-screen-2xl   md:container mx-auto px-6">
+      <div className=" lg:max-w-screen-2xl     mx-auto px-6">
        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-2">
           <div className="space-y-4">
