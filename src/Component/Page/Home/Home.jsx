@@ -5,6 +5,7 @@ import GallerySection from '../../GallerySection/GallerySection';
 import FeaturesSection from '../../Share/FeaturesSection';
 import Faq from "../../Share/Faq"
 import TestimonialsSection from '../../Share/TestimonialsSection';
+import ChatSection from './ChatSection/ChatSection';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <GallerySection></GallerySection> 
             <TestimonialsSection></TestimonialsSection>
              <Faq></Faq>
+             <ChatSection></ChatSection>
              <NewsLetter></NewsLetter>
         </div>
     );

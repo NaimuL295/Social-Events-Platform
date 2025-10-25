@@ -14,7 +14,7 @@ const handleChange = (e) => {
 
      useEffect(()=>{
       const query = search === "All" ? "" : search;
-axios.get(`https://social-event-server-side.vercel.app/event-search?searchparams=${query}`).
+axios.get(`https://social-events-platform-server-site.vercel.app/event-search?searchparams=${query}`).
 
 then((result) => {
    setEvent(result.data )

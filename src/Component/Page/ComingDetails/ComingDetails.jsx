@@ -15,7 +15,7 @@ const ComingDetails = () => {
 const Dates = format(new Date(newData?.date), "MMM dd, yyyy 'at' h:mm a");
 
     const handlerJoin=()=>{
-    axios.post("https://social-event-server-side.vercel.app/event-join-user",
+    axios.post("https://social-events-platform-server-site.vercel.app/event-join-user",
       {...newData ,email:user?.email}).then((result) => {
         setTimeout(()=>{
  navigate("/joinEvent") 

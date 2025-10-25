@@ -118,6 +118,7 @@ const handleLogout = () => {
               <li  ><NavLink className="text-base"  to="/createEvent">Create Event</NavLink></li>
               <li ><NavLink className="text-base"  to="/manageEvent">Manage Events</NavLink></li>
               <li><NavLink   className="text-base"  to="/joinEvent">Joined Events</NavLink></li>
+              <li><NavLink   className="text-base"  to="/locationMap">Location-Map</NavLink></li>
               <li><NavLink   className="text-base"  to="/profile">Profile</NavLink></li>
 
               <li>

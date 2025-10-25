@@ -21,6 +21,7 @@ import About from "../Page/About/About";
 import Profile from "../Page/Profile/Profile";
 import AuthLayout from "../RootLayout/AuthLayout";
 import ContactUs from "../Share/ContactUs";
+import LocationMap from "../Page/Event-Map/locationMap";
 
 export  const router = createBrowserRouter([
   {
@@ -39,21 +40,21 @@ export  const router = createBrowserRouter([
       {path:"comingEvent",Component:ComingEvent},
       {path:"about",Component:About},
       {path:"contact",Component:ContactUs},
-      
+       {path:"locationMap", Component:LocationMap},
       {path:"createEvent",
         
 
         element:<Protect> <CreateEvent></CreateEvent></Protect>  },
         {path:"profile",element:<Protect><Profile></Profile></Protect>},
         {path:"/details/:id",
-          loader:({params})=>axios.get(`https://social-event-server-side.vercel.app/event-one/${params.id}`),
+          loader:({params})=>axios.get(`https://social-events-platform-server-site.vercel.app/event-one/${params.id}`),
           element:<Protect>  <ComingDetails></ComingDetails>  </Protect>,
            hydrateFallbackElement:<Spinner></Spinner>
         },
 
         {path:"joinEvent",element:<Protect> <JoinEvent></JoinEvent> </Protect> },
         {path:"/update/:id",
-         loader:({params})=>axios.get(`https://social-event-server-side.vercel.app/event-manage-one/${params.id}`),
+         loader:({params})=>axios.get(`https://social-events-platform-server-site.vercel.app/event-manage-one/${params.id}`),
           hydrateFallbackElement:<Spinner></Spinner>,
 
           Component:ManageEventUpdate},

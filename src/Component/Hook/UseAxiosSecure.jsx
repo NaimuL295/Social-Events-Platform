@@ -7,7 +7,7 @@ import { AuthContext } from '../Context/AuthContext';
 
 const axiosInstance = axios.create({
 
-  baseURL:"https://social-event-server-side.vercel.app",
+  baseURL:"https://social-events-platform-server-site.vercel.app",
  withCredentials:true
 });
 const useAxiosSecure= () => {

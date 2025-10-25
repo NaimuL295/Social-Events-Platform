@@ -46,7 +46,7 @@ Swal.fire({
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-  axios.delete(`https://social-event-server-side.vercel.app/event-delete/${id}`).then((result) => {
+  axios.delete(`https://social-events-platform-server-site.vercel.app/event-delete/${id}`).then((result) => {
           console.log(result.data);
 
 
